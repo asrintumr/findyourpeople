@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>try { var th = localStorage.getItem('fyp-theme'); if (th === 'light' || th === 'dark') document.documentElement.dataset.theme = th; } catch (e) {}</script>
 <meta name="color-scheme" content="light dark">
 <title>Gomma</title>
 <meta name="description" content="Find something you enjoy. Find people who enjoy it too. Meetups, feeds and clubs across Cyprus.">
@@ -513,6 +514,10 @@ document.documentElement.lang = LANG;
 const LOC = () => LANG === 'tr' ? 'tr-TR' : LANG === 'el' ? 'el-GR' : 'en-GB';
 const LANGS = [['en','English','EN'],['tr','Türkçe','TR'],['el','Ελληνικά','ΕΛ']];
 const TR = {
+"Appearance":"Görünüm",
+"Same as my device":"Cihazımla aynı",
+"Light":"Açık",
+"Dark":"Koyu",
 "Demo version.":"Demo sürümü.",
 "What you do here is saved only on this device, so other people won’t see it.":"Burada yaptıkların yalnızca bu cihazda kaydedilir, başkaları göremez.",
 "This is a demo. What you enter stays on this device.":"Bu bir demo. Girdiklerin bu cihazda kalır.",
@@ -1075,6 +1080,10 @@ const TR = {
 "Volunteering": "Gönüllülük"
 };
 const EL = {
+"Appearance":"Εμφάνιση",
+"Same as my device":"Ίδιο με τη συσκευή μου",
+"Light":"Ανοιχτό",
+"Dark":"Σκούρο",
 "Demo version.":"Έκδοση επίδειξης.",
 "What you do here is saved only on this device, so other people won’t see it.":"Ό,τι κάνεις εδώ αποθηκεύεται μόνο σε αυτή τη συσκευή, οπότε οι άλλοι δεν το βλέπουν.",
 "This is a demo. What you enter stays on this device.":"Αυτό είναι demo. Ό,τι γράφεις μένει σε αυτή τη συσκευή.",
@@ -1719,6 +1728,8 @@ const I = {
   heart: svg('<path d="M12 20s-7.5-4.6-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/>'),
   check: svg('<path d="M5 12.5l4.5 4.5L19 7.5"/>'),
 };
+const THEMES = [['system', 'Same as my device'], ['light', 'Light'], ['dark', 'Dark']];
+const themeNow = () => document.documentElement.dataset.theme || 'system';
 const MM = 'M240 146 V100 Q240 74 266 74 Q292 74 292 100 V146 M292 100 Q292 74 318 74 Q344 74 344 100 V146 M344 100 Q344 74 370 74 Q396 74 396 100 V146 M396 100 Q396 74 422 74 Q448 74 448 100 V146';
 const logoSvg = (k, named) => `<svg viewBox="12 22 562 198" ${named ? 'role="img" aria-label="Gomma"' : 'aria-hidden="true"'}><defs>${[[220, 72], [292, 52], [344, 52], [396, 72]].map(([x, w], i) => `<clipPath id="${k}${i}"><rect x="${x}" y="0" width="${w}" height="230"/></clipPath>`).join('')}</defs><g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"><circle cx="56" cy="110" r="36" stroke="currentColor"/><path d="M92 74 V172 Q92 206 58 206 Q38 206 26 194" stroke="currentColor"/><circle cx="166" cy="110" r="36" stroke="currentColor"/>${[0, 1, 2, 3].map(i => `<path d="${MM}" clip-path="url(#${k}${i})" style="stroke:var(${i % 2 ? '--copper' : '--olive'})"/>`).join('')}<circle cx="524" cy="110" r="36" stroke="currentColor"/><path d="M560 74 V146" stroke="currentColor"/></g>${[266, 318, 370, 422].map((x, i) => `<circle cx="${x}" cy="40" r="15" style="fill:var(${i % 2 ? '--copper' : '--olive'})"/>`).join('')}</svg>`;
 
@@ -2929,6 +2940,7 @@ function profileHtml(){
     <div class="menu">
       ${S.demo ? `<button data-act="reset-demo" style="color:var(--danger)">${t('Reset the demo')}</button>` : ''}
       <button data-act="lang">${t('Language')}<span>${(LANGS.find(x => x[0] === LANG) || LANGS[0])[1]}</span></button>
+      <button data-act="theme">${t('Appearance')}<span>${t((THEMES.find(x => x[0] === themeNow()) || THEMES[0])[1])}</span></button>
       <button data-act="safety">${t('Meetup safety tips')}<span>${t('Read')}</span></button>
       <button data-act="blocked">${t('Blocked people')}<span>${(S.prefs.blocked || []).length}</span></button>
       ${S.canEdit ? `<button data-act="reports">${t('Reports from members')}<span>${reportCount}</span></button>` : ''}
@@ -2970,6 +2982,7 @@ function sheetHtml(){
   else if (s.type === 'blocked') { const list = S.prefs.blocked || []; body = `<h2 class="h2">${t('Blocked people')}</h2><p class="sub" style="margin-top:8px">${t('You don’t see their profiles, activities or messages.')}</p>${list.length ? `<div class="people-list" style="margin-top:16px">${list.map(u => `<div class="prow"><span class="who">${av(u, 36)}<b>${esc(nameOf(u))}</b></span><button class="btn btn-sm btn-ghost" data-act="unblock" data-uid="${esc(u)}">${t('Unblock')}</button></div>`).join('')}</div>` : `<p class="empty-line" style="margin-top:16px">${t('You haven’t blocked anyone.')}</p>`}`; }
   else if (s.type === 'reports') body = reportsSheet();
   else if (s.type === 'lang') body = `<h2 class="h2">${t('Language')}</h2><div style="margin-top:14px">${LANGS.map(([c, n]) => `<button class="opt" data-act="lang" data-v="${c}" aria-pressed="${LANG === c}" lang="${c}">${n}</button>`).join('')}</div>`;
+  else if (s.type === 'theme') body = `<h2 class="h2">${t('Appearance')}</h2><div style="margin-top:14px">${THEMES.map(([c, n]) => `<button class="opt" data-act="theme" data-v="${c}" aria-pressed="${themeNow() === c}">${t(n)}</button>`).join('')}</div>`;
   else if (s.type === 'thread') body = threadSheet(s);
   else if (s.type === 'compose') body = composeSheet(s);
   else if (s.type === 'explore') body = exploreSheet(s);
@@ -3209,6 +3222,7 @@ const ACT = {
   'plan-post': el => { const po = S.posts[el.dataset.id]; if (!po) return; const f = FEED[po.f]; const mine = po.by === S.me; S.draft = newDraft({feed:po.f, cat:f.cat, ...(mine ? {title:po.x.split('\n')[0].slice(0, 80), desc:po.x.slice(0, 1500)} : {})}); location.hash = '#create'; },
   'reset-demo': () => openSheet({type:'confirm', title:t('Reset the demo?'), body:t('Your profile, posts and activities on this device are removed, and the sample content comes back.'), cta:t('Reset'), danger:true, fn:() => { try { localStorage.removeItem(DEMO_KEY); } catch (e) {} location.hash = '#discover'; location.reload(); }}),
   lang: el => { const l = el.dataset.v; if (!l) { openSheet({type:'lang'}); return; } LANG = l; lsSet('fyp-lang', l); document.documentElement.lang = l; S.sheet = null; render(); },
+  theme: el => { const v = el.dataset.v; if (!v) { openSheet({type:'theme'}); return; } if (v === 'system') delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme = v; lsSet('fyp-theme', v); S.sheet = null; render(); },
   safety: el => openSheet({type:'safety', area:el.dataset.area || '', ctx:el.dataset.area ? 'act' : 'me'}),
   cur: el => { S.draft.cur = el.dataset.v; S.draft.curSet = true; render(); },
   blocked: () => openSheet({type:'blocked'}),
