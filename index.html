@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<title>Find Your People</title>
+<title>Gomma</title>
 <meta name="description" content="Find something you enjoy. Find people who enjoy it too. Meetups, feeds and clubs across Cyprus.">
 <meta name="theme-color" content="#0A7E8C">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Find Your People">
+<meta property="og:title" content="Gomma">
 <meta property="og:description" content="Find something you enjoy. Find people who enjoy it too. Meetups, feeds and clubs across Cyprus.">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫒</text></svg>">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3CclipPath id='a'%3E%3Crect x='220' y='0' width='72' height='230'/%3E%3C/clipPath%3E%3CclipPath id='b'%3E%3Crect x='292' y='0' width='72' height='230'/%3E%3C/clipPath%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='%23E3EBDB'/%3E%3Cg transform='translate(-96 4.75) scale(0.5)' fill='none' stroke-width='20' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M240 146 V100 Q240 74 266 74 Q292 74 292 100 V146 M292 100 Q292 74 318 74 Q344 74 344 100 V146' stroke='%230A7E8C' clip-path='url(%23a)'/%3E%3Cpath d='M240 146 V100 Q240 74 266 74 Q292 74 292 100 V146 M292 100 Q292 74 318 74 Q344 74 344 100 V146' stroke='%23C2410C' clip-path='url(%23b)'/%3E%3Ccircle cx='266' cy='40' r='15' fill='%230A7E8C' stroke='none'/%3E%3Ccircle cx='318' cy='40' r='15' fill='%23C2410C' stroke='none'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -21,10 +21,10 @@
   --bg:#F3F9FA; --surface:#FFFFFF; --surface-2:#E6F3F4; --line:#D5E6E9;
   --ink:#13242C; --ink-2:#41565F; --ink-3:#5F747D;
   --olive:#0A7E8C; --olive-ink:#FFFFFF; --olive-soft:#D6F2F3;
-  --copper:#D42A72; --copper-ink:#FFFFFF; --copper-soft:#FFE1EE;
+  --copper:#C2410C; --copper-ink:#FFFFFF; --copper-soft:#FCE6D9;
   --sea:#1D6FD1; --danger:#C0281A; --danger-soft:#FDE2DF;
   --tang:#F28C28; --sun:#FFC93C;
-  --copper-text:#A81C59; --olive-text:#065F6A;
+  --copper-text:#9A3412; --olive-text:#065F6A;
   --shadow:0 8px 28px rgba(16,60,72,.14);
   --font:"Commissioner","Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
   box-sizing:border-box;
@@ -37,10 +37,10 @@
     --bg:#0E1A22; --surface:#15252F; --surface-2:#1D3140; --line:#2A4152;
     --ink:#EEF7F8; --ink-2:#BCD0D6; --ink-3:#8AA2AB;
     --olive:#45D3DB; --olive-ink:#062026; --olive-soft:#123A42;
-    --copper:#FF6FA8; --copper-ink:#2B0617; --copper-soft:#3E1A2E;
+    --copper:#F28C28; --copper-ink:#2A1103; --copper-soft:#3D2414;
     --sea:#7CC4FF; --danger:#FF8A80; --danger-soft:#40201E;
     --tang:#FFA24C; --sun:#FFD25C;
-    --copper-text:#FF6FA8; --olive-text:#45D3DB;
+    --copper-text:#F7A65E; --olive-text:#45D3DB;
     --shadow:0 8px 28px rgba(0,0,0,.45);
   }
 }
@@ -49,10 +49,10 @@
   --bg:#0E1A22; --surface:#15252F; --surface-2:#1D3140; --line:#2A4152;
   --ink:#EEF7F8; --ink-2:#BCD0D6; --ink-3:#8AA2AB;
   --olive:#45D3DB; --olive-ink:#062026; --olive-soft:#123A42;
-  --copper:#FF6FA8; --copper-ink:#2B0617; --copper-soft:#3E1A2E;
+  --copper:#F28C28; --copper-ink:#2A1103; --copper-soft:#3D2414;
   --sea:#7CC4FF; --danger:#FF8A80; --danger-soft:#40201E;
   --tang:#FFA24C; --sun:#FFD25C;
-  --copper-text:#FF6FA8; --olive-text:#45D3DB;
+  --copper-text:#F7A65E; --olive-text:#45D3DB;
   --shadow:0 8px 28px rgba(0,0,0,.45);
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -147,7 +147,7 @@ h1,h2,h3,p{margin:0}
 /* top of discover */
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:6px 0}
 .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:15.5px;letter-spacing:-.01em}
-.brand svg{width:38px;height:19px;color:var(--tang)}
+.brand svg{width:74px;height:26px;color:var(--ink);display:block}
 .greet{font-size:31px;font-weight:800;letter-spacing:-.03em;line-height:1.08;margin:20px 0 6px}
 .arealine{display:flex;align-items:center;flex-wrap:wrap;gap:4px;color:var(--ink-2);font-size:15px}
 .arealine select{border:0;background:transparent;font-weight:700;color:var(--ink);padding:4px 2px;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--copper);text-decoration-thickness:2px;cursor:pointer;-webkit-appearance:none;appearance:none;max-width:100%;text-overflow:ellipsis}
@@ -297,7 +297,8 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:linear-gradi
 
 /* onboarding */
 .ob{min-height:calc(100vh - 60px);display:flex;flex-direction:column;padding-top:20px}
-.ob-mark{width:132px;height:66px;color:var(--tang);margin-top:8vh}
+.ob-mark{width:160px;height:57px;color:var(--ink);margin-top:8vh}
+.ob-mark svg{width:100%;height:100%;display:block}
 .ob-title{font-size:40px;font-weight:800;letter-spacing:-.035em;line-height:1.02;margin-top:28px;max-width:12ch}
 .ob-title span{display:block;color:var(--olive)}
 .ob-progress{display:flex;gap:6px;margin:6px 0 22px}
@@ -372,7 +373,7 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:linear-gradi
 .toast{position:fixed;left:50%;top:calc(14px + env(safe-area-inset-top,0px));transform:translate(-50%,-16px);opacity:0;pointer-events:none;z-index:60;background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:14px;font-size:14.5px;font-weight:600;max-width:min(92vw,480px);text-align:center;transition:opacity .2s,transform .2s}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .loading{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:60vh;color:var(--ink-2)}
-.loading svg{width:72px;height:36px;color:var(--tang);animation:pulse 1.4s ease-in-out infinite}
+.loading svg{width:114px;height:40px;color:var(--ink);animation:pulse 1.4s ease-in-out infinite}
 @keyframes pulse{50%{opacity:.35}}
 .empty{text-align:center;padding:48px 12px;color:var(--ink-2)}
 .empty h2{color:var(--ink);margin-bottom:8px}
@@ -959,7 +960,7 @@ const TR = {
 "Add a short description so people know what it’s about.": "Neyle ilgili olduğu anlaşılsın diye kısa bir açıklama ekle.",
 "Club created. Schedule its first activity so people have something to attend.": "Kulüp kuruldu. İnsanların katılabileceği ilk etkinliği planla.",
 "Add the name people will see.": "İnsanların göreceği adı ekle.",
-"Find Your People is for adults 18 and over right now.": "Find Your People şu an yalnızca 18 yaş ve üzeri yetişkinler için.",
+"Gomma is for adults 18 and over right now.": "Gomma şu an yalnızca 18 yaş ve üzeri yetişkinler için.",
 "Enter an age between 18 and 99, or leave it blank.": "18 ile 99 arasında bir yaş gir ya da boş bırak.",
 "Pick at least 3 interests.": "En az 3 ilgi alanı seç.",
 "Follow at least one feed.": "En az bir akışı takip et.",
@@ -969,7 +970,7 @@ const TR = {
 "Write something first.": "Önce bir şey yaz.",
 "Unblocked.": "Engel kaldırıldı.",
 "Nothing scheduled yet. Regular meetups keep a club alive, so put the next one on the calendar.": "Henüz planlanmış bir şey yok. Düzenli buluşmalar bir kulübü canlı tutar; bir sonrakini takvime ekle.",
-"Opening Find Your People…": "Find Your People açılıyor…",
+"Opening Gomma…": "Gomma açılıyor…",
 "Your access changed": "Erişimin değişti",
 "Reload the page to continue.": "Devam etmek için sayfayı yenile.",
 "Finding what’s on near you…": "Yakınında neler olduğuna bakılıyor…",
@@ -1523,7 +1524,7 @@ const EL = {
 "Add a short description so people know what it’s about.": "Πρόσθεσε μια σύντομη περιγραφή ώστε να ξέρουν περί τίνος πρόκειται.",
 "Club created. Schedule its first activity so people have something to attend.": "Η λέσχη δημιουργήθηκε. Προγραμμάτισε την πρώτη δραστηριότητα για να έχουν κάπου να έρθουν.",
 "Add the name people will see.": "Πρόσθεσε το όνομα που θα βλέπουν οι άλλοι.",
-"Find Your People is for adults 18 and over right now.": "Το Find Your People είναι προς το παρόν μόνο για ενήλικες 18 ετών και άνω.",
+"Gomma is for adults 18 and over right now.": "Το Gomma είναι προς το παρόν μόνο για ενήλικες 18 ετών και άνω.",
 "Enter an age between 18 and 99, or leave it blank.": "Βάλε ηλικία από 18 έως 99 ή άφησέ το κενό.",
 "Pick at least 3 interests.": "Διάλεξε τουλάχιστον 3 ενδιαφέροντα.",
 "Follow at least one feed.": "Ακολούθησε τουλάχιστον μία ροή.",
@@ -1531,7 +1532,7 @@ const EL = {
 "Welcome! Here’s what’s happening near you.": "Καλώς ήρθες! Δες τι γίνεται κοντά σου.",
 "Profile saved.": "Το προφίλ αποθηκεύτηκε.",
 "Write something first.": "Γράψε κάτι πρώτα.",
-"Opening Find Your People…": "Άνοιγμα του Find Your People…",
+"Opening Gomma…": "Άνοιγμα του Gomma…",
 "Your access changed": "Η πρόσβασή σου άλλαξε",
 "Reload the page to continue.": "Ανανέωσε τη σελίδα για να συνεχίσεις.",
 "Finding what’s on near you…": "Ψάχνουμε τι γίνεται κοντά σου…",
@@ -1718,7 +1719,8 @@ const I = {
   heart: svg('<path d="M12 20s-7.5-4.6-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/>'),
   check: svg('<path d="M5 12.5l4.5 4.5L19 7.5"/>'),
 };
-const CY = `<svg viewBox="0 0 100 50" aria-hidden="true"><path fill="currentColor" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" d="M6 27 L10 19 L16 19.5 L30 14.5 L42 12.5 L55 13.5 L64 12.5 L71 10 L83 5 L96 1 L90 5.5 L79 12.5 L73 17.5 L71 24 L66.5 28.5 L60.5 32 L56.5 36.5 L48 38.5 L37 42 L32.5 46 L28.5 42.5 L20 40.5 L12.5 36.5 L7.5 31.5 Z"/></svg>`;
+const MM = 'M240 146 V100 Q240 74 266 74 Q292 74 292 100 V146 M292 100 Q292 74 318 74 Q344 74 344 100 V146 M344 100 Q344 74 370 74 Q396 74 396 100 V146 M396 100 Q396 74 422 74 Q448 74 448 100 V146';
+const logoSvg = (k, named) => `<svg viewBox="12 22 562 198" ${named ? 'role="img" aria-label="Gomma"' : 'aria-hidden="true"'}><defs>${[[220, 72], [292, 52], [344, 52], [396, 72]].map(([x, w], i) => `<clipPath id="${k}${i}"><rect x="${x}" y="0" width="${w}" height="230"/></clipPath>`).join('')}</defs><g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"><circle cx="56" cy="110" r="36" stroke="currentColor"/><path d="M92 74 V172 Q92 206 58 206 Q38 206 26 194" stroke="currentColor"/><circle cx="166" cy="110" r="36" stroke="currentColor"/>${[0, 1, 2, 3].map(i => `<path d="${MM}" clip-path="url(#${k}${i})" style="stroke:var(${i % 2 ? '--copper' : '--olive'})"/>`).join('')}<circle cx="524" cy="110" r="36" stroke="currentColor"/><path d="M560 74 V146" stroke="currentColor"/></g>${[266, 318, 370, 422].map((x, i) => `<circle cx="${x}" cy="40" r="15" style="fill:var(${i % 2 ? '--copper' : '--olive'})"/>`).join('')}</svg>`;
 
 /* ---------- utilities ---------- */
 const $ = s => document.querySelector(s);
@@ -2323,7 +2325,7 @@ async function createCommunity(){
 }
 async function saveProfileDraft(d, isNew){
   if (!String(d.name).trim()) { d.err = t('Add the name people will see.'); render(); return false; }
-  if (!d.adult) { d.err = t('Find Your People is for adults 18 and over right now.'); render(); return false; }
+  if (!d.adult) { d.err = t('Gomma is for adults 18 and over right now.'); render(); return false; }
   const ageN = d.age === '' || d.age == null ? null : parseInt(d.age, 10);
   if (ageN != null && (isNaN(ageN) || ageN < 18 || ageN > 99)) { d.err = t('Enter an age between 18 and 99, or leave it blank.'); render(); return false; }
   if ((d.interests || []).length < (isNew ? 3 : 1)) { d.err = isNew ? t('Pick at least 3 interests.') : t('Follow at least one feed.'); render(); return false; }
@@ -2342,7 +2344,7 @@ async function saveProfileDraft(d, isNew){
 }
 
 /* ---------- views ---------- */
-function loadingHtml(msg){ return `<div class="loading">${CY}<p>${esc(msg)}</p></div>`; }
+function loadingHtml(msg){ return `<div class="loading">${logoSvg('lg-load')}<p>${esc(msg)}</p></div>`; }
 function emptyHtml(title, body, cta){ return `<div class="empty"><h2 class="h2">${title}</h2><p>${body}</p>${cta || ''}</div>`; }
 function backBar(extra = ''){ return `<div class="backbar"><button class="iconbtn" data-act="back" aria-label="${t('Back')}">${I.back}</button><span class="spacer"></span>${extra}</div>`; }
 function needsOnboarding(){ return S.loaded.profiles && S.canWrite && S.hasId && !S.profiles[S.me]; }
@@ -2353,7 +2355,7 @@ function accessBanner(){
 }
 
 function viewHtml(){
-  if (!S.booted) return loadingHtml(t('Opening Find Your People…'));
+  if (!S.booted) return loadingHtml(t('Opening Gomma…'));
   if (S.revoked) return emptyHtml(t('Your access changed'), t('Reload the page to continue.'));
   if (!S.loaded.profiles || !S.loaded.acts) return loadingHtml(t('Finding what’s on near you…'));
   if (needsOnboarding()) return onboardingHtml();
@@ -2378,7 +2380,7 @@ function onboardingHtml(){
   const err = o.err ? `<p class="err" role="alert">${esc(o.err)}</p>` : '';
   if (o.step === 0) return `<section class="ob">
     <div class="seg" style="align-self:flex-end" role="group" aria-label="${t('Language')}">${LANGS.map(([c, n]) => `<button data-act="lang" data-v="${c}" aria-pressed="${LANG === c}" lang="${c}">${n}</button>`).join('')}</div>
-    <div class="ob-mark">${CY}</div>
+    <div class="ob-mark">${logoSvg('lg-ob', true)}</div>
     <h1 class="ob-title">${t('Find something you enjoy.')}<span>${t('Find people who enjoy it too.')}</span></h1>
     <p class="sub" style="margin-top:18px;font-size:17px">${t('Walks, games, sea swims and coffee meetups near you in Cyprus, with the people who actually show up.')}</p>
     <p class="hint" style="margin-top:14px">${t('This is a demo. What you enter stays on this device.')}</p>
@@ -2438,7 +2440,7 @@ function discoverHtml(){
 
   return `
   <div class="topbar">
-    <div class="brand">${CY}<span>Find Your People</span></div>
+    <div class="brand">${logoSvg('lg-top', true)}</div>
     <div style="display:flex;gap:8px"><button class="iconbtn lang-btn" data-act="lang" aria-label="${t('Change language')}">${(LANGS.find(x => x[0] === LANG) || LANGS[0])[2]}</button>${S.hasId ? `<button class="iconbtn" data-act="notifs" aria-label="${t('Notifications')}${unread ? `, ${t('{n} new', {n:unread})}` : ''}">${I.bell}${unread ? `<span class="badge">${unread > 9 ? '9+' : unread}</span>` : ''}</button>` : ''}</div>
   </div>
   ${accessBanner()}
@@ -3161,7 +3163,7 @@ const ACT = {
       if (!String(o.name).trim()) { o.err = t('Add the name people will see.'); return render(); }
       const n = o.age === '' ? null : parseInt(o.age, 10);
       if (o.age !== '' && (isNaN(n) || n < 18 || n > 99)) { o.err = t('Enter an age between 18 and 99, or leave it blank.'); return render(); }
-      if (!o.adult) { o.err = t('Find Your People is for adults 18 and over right now.'); return render(); }
+      if (!o.adult) { o.err = t('Gomma is for adults 18 and over right now.'); return render(); }
     }
     if (o.step === 2 && o.interests.length < 3) { o.err = t('Pick at least 3 interests.'); return render(); }
     o.step++; render(); window.scrollTo(0, 0);
