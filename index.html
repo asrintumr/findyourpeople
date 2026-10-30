@@ -7,6 +7,10 @@
 <title>Find Your People</title>
 <meta name="description" content="Find something you enjoy. Find people who enjoy it too. Meetups, feeds and clubs across Cyprus.">
 <meta name="theme-color" content="#0A7E8C">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Find Your People">
+<meta property="og:description" content="Find something you enjoy. Find people who enjoy it too. Meetups, feeds and clubs across Cyprus.">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫒</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +24,7 @@
   --copper:#D42A72; --copper-ink:#FFFFFF; --copper-soft:#FFE1EE;
   --sea:#1D6FD1; --danger:#C0281A; --danger-soft:#FDE2DF;
   --tang:#F28C28; --sun:#FFC93C;
+  --copper-text:#A81C59; --olive-text:#065F6A;
   --shadow:0 8px 28px rgba(16,60,72,.14);
   --font:"Commissioner","Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
   box-sizing:border-box;
@@ -35,6 +40,7 @@
     --copper:#FF6FA8; --copper-ink:#2B0617; --copper-soft:#3E1A2E;
     --sea:#7CC4FF; --danger:#FF8A80; --danger-soft:#40201E;
     --tang:#FFA24C; --sun:#FFD25C;
+    --copper-text:#FF6FA8; --olive-text:#45D3DB;
     --shadow:0 8px 28px rgba(0,0,0,.45);
   }
 }
@@ -46,6 +52,7 @@
   --copper:#FF6FA8; --copper-ink:#2B0617; --copper-soft:#3E1A2E;
   --sea:#7CC4FF; --danger:#FF8A80; --danger-soft:#40201E;
   --tang:#FFA24C; --sun:#FFD25C;
+  --copper-text:#FF6FA8; --olive-text:#45D3DB;
   --shadow:0 8px 28px rgba(0,0,0,.45);
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -90,8 +97,8 @@ h1,h2,h3,p{margin:0}
 
 /* tags & chips */
 .tag{display:inline-flex;align-items:center;gap:4px;font-size:12.5px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--surface-2);color:var(--ink-2);white-space:nowrap}
-.tag-olive{background:var(--olive-soft);color:var(--olive)}
-.tag-copper{background:var(--copper-soft);color:var(--copper)}
+.tag-olive{background:var(--olive-soft);color:var(--olive-text)}
+.tag-copper{background:var(--copper-soft);color:var(--copper-text)}
 .tag-danger{background:var(--danger-soft);color:var(--danger)}
 .tag-xs{font-size:11px;padding:2px 8px}
 .chips{display:flex;gap:8px;overflow-x:auto;padding:2px 18px 6px;margin:0 -18px;scrollbar-width:none}
@@ -132,7 +139,10 @@ h1,h2,h3,p{margin:0}
 .reply:first-child{border-top:0}
 .sec small a{color:var(--sea);text-decoration:none;font-weight:600}
 .feed-link{display:inline-flex;align-items:center;gap:4px;font-weight:700;color:var(--ink);text-decoration:underline;text-decoration-color:var(--copper);text-underline-offset:3px}
-.chip-static.shared{background:var(--olive-soft);border-color:transparent;color:var(--olive);font-weight:700}
+.chipwrap .chip{white-space:normal;text-align:left;max-width:100%}
+.row2 > *{min-width:0;width:100%}
+.topbar{flex-wrap:wrap;gap:8px}
+.chip-static.shared{background:var(--olive-soft);border-color:transparent;color:var(--olive-text);font-weight:700}
 
 /* top of discover */
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:6px 0}
@@ -224,7 +234,7 @@ h1,h2,h3,p{margin:0}
 /* detail pages */
 .backbar{display:flex;align-items:center;gap:8px;padding:4px 0 8px}
 .backbar .spacer{flex:1}
-.d-cat{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;color:var(--olive);background:var(--olive-soft);padding:5px 12px;border-radius:999px;margin-top:10px}
+.d-cat{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;color:var(--olive-text);background:var(--olive-soft);padding:5px 12px;border-radius:999px;margin-top:10px}
 .d-title{font-size:32px;font-weight:800;letter-spacing:-.03em;line-height:1.08;margin:12px 0 0}
 .d-host{display:flex;align-items:center;gap:10px;margin-top:16px;background:none;border:0;padding:0;text-align:left}
 .d-host small{display:block;font-size:12.5px;color:var(--ink-3)}
@@ -1777,7 +1787,7 @@ const DEMO_KEY = 'fyp-demo-v1';
 const SAMPLE_DOC = /^(profiles|activities|posts|members|chats)\/sample-/;
 function demoSeed(){
   const N = Date.now(), H = HOUR, M = MIN, D = DAY, docs = {};
-  const soon = m => { const x = new Date(N + m * M); x.setMinutes(Math.ceil(x.getMinutes() / 15) * 15, 0, 0); return x.getTime(); };
+  const soon = (m, fh, fm) => { const x = new Date(N + m * M); x.setMinutes(Math.ceil(x.getMinutes() / 15) * 15, 0, 0); const sameDay = x.getDate() === new Date(N).getDate(), h = x.getHours(); if (sameDay && h >= 8 && h < 21) return x.getTime(); return on(new Date(N).getHours() < 8 ? 0 : 1, fh, fm || 0); };
   const on = (days, hh, mm) => { const x = new Date(N); x.setDate(x.getDate() + days); x.setHours(hh, mm || 0, 0, 0); return x.getTime(); };
   const E = 'sample-eleni', ME = 'sample-mert', A = 'sample-amara', NI = 'sample-nikos', DE = 'sample-defne', SA = 'sample-sam', YOU = 'demo-me';
   const prof = (id, p) => { docs['profiles/' + id] = {adult:true, joinedAt:N - 10 * D, sample:true, invites:[], following:{}, ...p}; };
@@ -1788,9 +1798,9 @@ function demoSeed(){
   prof(DE, {name:'Defne T.', area:'kyrenia', age:26, showAge:true, bio:'Sea swimmer. Happiest before 8am.', interests:['Swimming','Snorkelling','Yoga','Beach days','Coffee','Sunset walks']});
   prof(SA, {name:'Sam R.', area:'famagusta', age:23, showAge:true, bio:'Just moved here for my master’s. Looking for people to explore with.', interests:['Student life','Meeting new people','Live music','Quiz nights','Running','Coffee','Wine & meze'], following:{[A]:N - 2 * D, [ME]:N - D}});
   const act = (id, org, o) => { (docs['activities/' + org] = docs['activities/' + org] || {items:{}}).items[id] = {vis:'public', comm:'', price:0, cur:'', area:'famagusta', status:'open', ...o, org}; };
-  act('smpcoffee', ME, {title:'Coffee and chat for new students', feed:'coffee', cat:'food', desc:'For anyone new to Famagusta. Come say hi, get café tips and meet a few people.', startAt:soon(90), dur:60, cap:8, spot:'Old town, near Namık Kemal Square', exact:'Outdoor tables at the corner café facing the square. Look for the olive-green flag.', comm:'unisocial', createdAt:N - 6 * H});
-  act('smpvolley', A, {title:'Casual beach volleyball', feed:'beach-volleyball', cat:'sports', desc:'Mixed levels, rotating teams. Courts are free, just bring water and sunscreen.', startAt:soon(150), dur:120, cap:12, spot:'Glapsides Beach courts', exact:'Court 2, the one closest to the beach bar. I have two balls.', createdAt:N - 3 * H});
-  act('smpsunset', E, {title:'Walk along Palm Beach', feed:'sunset-walks', cat:'outdoor', desc:'Easy pace, about 4 km to the old town walls and back.', startAt:soon(240), dur:90, cap:10, spot:'Palm Beach promenade', exact:'By the lifeguard tower at the north end. I’ll be in a green jacket.', createdAt:N - 5 * H});
+  act('smpcoffee', ME, {title:'Coffee and chat for new students', feed:'coffee', cat:'food', desc:'For anyone new to Famagusta. Come say hi, get café tips and meet a few people.', startAt:soon(90, 10, 30), dur:60, cap:8, spot:'Old town, near Namık Kemal Square', exact:'Outdoor tables at the corner café facing the square. Look for the olive-green flag.', comm:'unisocial', createdAt:N - 6 * H});
+  act('smpvolley', A, {title:'Casual beach volleyball', feed:'beach-volleyball', cat:'sports', desc:'Mixed levels, rotating teams. Courts are free, just bring water and sunscreen.', startAt:soon(150, 16), dur:120, cap:12, spot:'Glapsides Beach courts', exact:'Court 2, the one closest to the beach bar. I have two balls.', createdAt:N - 3 * H});
+  act('smpsunset', E, {title:'Walk along Palm Beach', feed:'sunset-walks', cat:'outdoor', desc:'Easy pace, about 4 km to the old town walls and back.', startAt:soon(240, 18, 30), dur:90, cap:10, spot:'Palm Beach promenade', exact:'By the lifeguard tower at the north end. I’ll be in a green jacket.', createdAt:N - 5 * H});
   act('smprun', A, {title:'Easy 5 km seafront run', feed:'running', cat:'sports', desc:'Conversational pace, around 6:30 per km. Nobody gets left behind.', startAt:on(1, 8), dur:60, cap:15, spot:'Famagusta marina entrance', exact:'Next to the marina sign by the car park.', comm:'famagustarunners', createdAt:N - 26 * H});
   act('smpswim', DE, {title:'Sea swim and coffee', feed:'swimming', cat:'sports', desc:'About 800 m along the shore, then coffee on the beach.', startAt:on(2, 8, 30), dur:90, cap:10, spot:'Silver Beach', exact:'Steps at the south end of the beach.', comm:'sundayswimmers', createdAt:N - 27 * H});
   act('smpkantara', NI, {title:'Kantara castle hike', feed:'hiking', cat:'outdoor', desc:'About 7 km with 300 m of climbing, mostly shaded. We stop at the castle for snacks and photos. Bring 2 L of water.', startAt:on(2, 9), dur:240, cap:12, spot:'Kantara village square', exact:'Car park below the castle gate. Look for the orange backpack.', comm:'cyprushiking', createdAt:N - 23 * H});
