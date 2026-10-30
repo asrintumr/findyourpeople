@@ -2,59 +2,84 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- ================================================================
+     YOUR SETTINGS
+     Paste your two Supabase details between the quotes below.
+     Find them in Supabase: Project Settings > API Keys.
+     Use the "anon public" or "publishable" key. Never the secret key.
+     ================================================================ -->
+<script>
+window.FYP_CONFIG = {
+  supabaseUrl: 'https://gryxlglduutwinehlyth.supabase.co',
+  supabaseAnonKey: 'sb_publishable_OwIDUlbUDl5QySbSsqNX5w_2kpswWKa',
+  google: false,
+  apple: false
+};
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>try { var th = localStorage.getItem('fyp-theme'); if (th === 'light' || th === 'dark') document.documentElement.dataset.theme = th; } catch (e) {}</script>
 <meta name="color-scheme" content="light dark">
 <title>Gomma</title>
 <meta name="description" content="Find something you enjoy. Find people who enjoy it too. Meetups, feeds and clubs across Cyprus.">
-<meta name="theme-color" content="#0A7E8C">
+<meta name="theme-color" content="#f9f8f5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Gomma">
 <meta property="og:description" content="Find something you enjoy. Find people who enjoy it too. Meetups, feeds and clubs across Cyprus.">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3CclipPath id='a'%3E%3Crect x='220' y='0' width='72' height='230'/%3E%3C/clipPath%3E%3CclipPath id='b'%3E%3Crect x='292' y='0' width='72' height='230'/%3E%3C/clipPath%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='%23E3EBDB'/%3E%3Cg transform='translate(-96 4.75) scale(0.5)' fill='none' stroke-width='20' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M240 146 V100 Q240 74 266 74 Q292 74 292 100 V146 M292 100 Q292 74 318 74 Q344 74 344 100 V146' stroke='%230A7E8C' clip-path='url(%23a)'/%3E%3Cpath d='M240 146 V100 Q240 74 266 74 Q292 74 292 100 V146 M292 100 Q292 74 318 74 Q344 74 344 100 V146' stroke='%23C2410C' clip-path='url(%23b)'/%3E%3Ccircle cx='266' cy='40' r='15' fill='%230A7E8C' stroke='none'/%3E%3Ccircle cx='318' cy='40' r='15' fill='%23C2410C' stroke='none'/%3E%3C/g%3E%3C/svg%3E">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js" integrity="sha384-TcHRA3zBbn+Lexh5n+Oil4guNPOS3rjNDpGRAN46u/s/mB2IZ50ceC6TYDU2yvgK" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
   color-scheme: light;
-  --bg:#BAD5E8; --surface:#DCE9F3; --surface-2:#CFE2EE; --line:#9DBCD1;
-  --ink:#13242C; --ink-2:#374B53; --ink-3:#45585F;
-  --olive:#08707D; --olive-ink:#FFFFFF; --olive-soft:#CFE8E6;
-  --copper:#B83D0B; --copper-ink:#FFFFFF; --copper-soft:#FCE6D9;
-  --sea:#1857A6; --danger:#A21F13; --danger-soft:#FDE2DF;
-  --tang:#F28C28; --sun:#FFC93C;
-  --copper-text:#9A3412; --olive-text:#065F6A;
-  --shadow:0 8px 28px rgba(16,60,72,.14);
-  --font:"Commissioner","Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --bg:#f9f8f5; --surface:#ffffff; --surface-2:#f9f8f5; --line:#e0e0de;
+  --ink:#000000; --ink-2:#43423f; --ink-3:#64635e;
+  --olive:#000000; --olive-ink:#ffffff; --olive-soft:#f9f8f5;
+  --copper:#C2410C; --copper-ink:#ffffff; --copper-soft:#f9f8f5;
+  --sea:#0060d0; --danger:#B42318; --danger-soft:#FBEAE8;
+  --tang:#C2410C; --sun:#C2410C;
+  --copper-text:#A3360A; --olive-text:#43423f;
+  --shadow:none;
+  --font:"Source Sans 3","Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
+  --logo-teal:#08707D;
+  --logo-orange:#C2410C;
+
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     color-scheme: dark;
-    --bg:#0E1A22; --surface:#15252F; --surface-2:#1D3140; --line:#2A4152;
-    --ink:#EEF7F8; --ink-2:#BCD0D6; --ink-3:#8AA2AB;
-    --olive:#45D3DB; --olive-ink:#062026; --olive-soft:#123A42;
-    --copper:#F28C28; --copper-ink:#2A1103; --copper-soft:#3D2414;
-    --sea:#7CC4FF; --danger:#FF8A80; --danger-soft:#40201E;
-    --tang:#FFA24C; --sun:#FFD25C;
-    --copper-text:#F7A65E; --olive-text:#45D3DB;
-    --shadow:0 8px 28px rgba(0,0,0,.45);
+    --bg:#161615; --surface:#21211f; --surface-2:#2a2a27; --line:#3d3c39;
+    --ink:#f9f8f5; --ink-2:#e0e0de; --ink-3:#b0afa9;
+    --olive:#f9f8f5; --olive-ink:#161615; --olive-soft:#2a2a27;
+    --copper:#F28C28; --copper-ink:#2A1103; --copper-soft:#2a2a27;
+    --sea:#7DB0FF; --danger:#FF8A80; --danger-soft:#3A1F1C;
+    --tang:#F28C28; --sun:#F28C28;
+    --copper-text:#F7A65E; --olive-text:#e0e0de;
+    --shadow:none;
+    --logo-teal:#45D3DB;
+    --logo-orange:#F28C28;
+
   }
 }
 :root[data-theme="dark"]{
   color-scheme: dark;
-  --bg:#0E1A22; --surface:#15252F; --surface-2:#1D3140; --line:#2A4152;
-  --ink:#EEF7F8; --ink-2:#BCD0D6; --ink-3:#8AA2AB;
-  --olive:#45D3DB; --olive-ink:#062026; --olive-soft:#123A42;
-  --copper:#F28C28; --copper-ink:#2A1103; --copper-soft:#3D2414;
-  --sea:#7CC4FF; --danger:#FF8A80; --danger-soft:#40201E;
-  --tang:#FFA24C; --sun:#FFD25C;
-  --copper-text:#F7A65E; --olive-text:#45D3DB;
-  --shadow:0 8px 28px rgba(0,0,0,.45);
+  --bg:#161615; --surface:#21211f; --surface-2:#2a2a27; --line:#3d3c39;
+  --ink:#f9f8f5; --ink-2:#e0e0de; --ink-3:#b0afa9;
+  --olive:#f9f8f5; --olive-ink:#161615; --olive-soft:#2a2a27;
+  --copper:#F28C28; --copper-ink:#2A1103; --copper-soft:#2a2a27;
+  --sea:#7DB0FF; --danger:#FF8A80; --danger-soft:#3A1F1C;
+  --tang:#F28C28; --sun:#F28C28;
+  --copper-text:#F7A65E; --olive-text:#e0e0de;
+  --shadow:none;
+  --logo-teal:#45D3DB;
+  --logo-orange:#F28C28;
+
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
@@ -206,6 +231,13 @@ h1,h2,h3,p{margin:0}
 /* avatars */
 .av{width:var(--s,36px);height:var(--s,36px);border-radius:50%;flex:none;display:inline-grid;place-items:center;font-weight:700;font-size:calc(var(--s,36px)*.38);color:#fff;background:var(--c,#5E6B3A);overflow:hidden;line-height:1;letter-spacing:0}
 .av img{width:100%;height:100%;object-fit:cover}
+.photo-edit{display:flex;align-items:center;gap:16px;margin:10px 0 8px}
+.photo-btns{display:flex;flex-wrap:wrap;gap:8px;flex:1;min-width:0}
+.photo-btns .btn{white-space:normal;max-width:100%;text-align:center;line-height:1.25}
+.photo-pick{position:relative;cursor:pointer}
+.photo-pick:focus-within{outline:2px solid var(--olive);outline-offset:2px}
+.photo-pick.is-busy{opacity:.7;cursor:progress}
+.vh{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}
 
 /* horizontal tiles */
 .hscroll{display:flex;gap:10px;overflow-x:auto;margin:0 -18px;padding:2px 18px 6px;scrollbar-width:none}
@@ -497,6 +529,55 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:linear-gradi
   main{padding-left:24px;padding-right:24px}
   .chips,.hscroll,.tl-wrap{margin:0 -24px;padding-left:24px;padding-right:24px}
 }
+
+/* ================= Design system: flat logbook, Gomma edition =================
+   Warm linen page, white surfaces, black ink, warm greys. Square flat cards, 4px corners on
+   things you press or type into, no shadows, blur or gradients. Two weights: 400 and 600.
+   One orange signal for the main action on a screen; link blue only for inline links. */
+:root{--r:4px}
+body{font-family:var(--font);background:var(--bg)}
+b,strong{font-weight:600}
+.h1,.h2,.sec,.btn,.badge,.tag,.mini-when b,.feed-link,.chip-static.shared,.brand,.greet,.arealine select,.banner b,.tl-now span,.tl-pill .t,.tl-pill .m b,.act-when b,.act h3,.act-foot .price,.foryou,.av,.comm h3,.d-cat,.d-title,.lbl,.stepper b,.cat-head,.areas button,.ob-title,.sh,.lang-btn,.sos-num,.cal-head b,.cal-sel,.cal-row .txt a,.act-when span.soon,.ig-top h1,.story[aria-selected="true"],.feedline h2,.ig-media p,.ig-act-media .when,.ig-act-media .title,.ig-likes,.ig-clubs h3{font-weight:600;letter-spacing:0}
+.h1{font-size:32px;line-height:1.2}
+.ob-title{font-size:40px;line-height:1.05;letter-spacing:-.01em}
+.ob-title span{color:var(--ink-2)}
+/* corners */
+.btn,.iconbtn,.badge,.tag,.chip,.post-actions button,.mini-act,.search input,.banner,.tl-pill,.d-cat,.inp,.seg,.seg button,.stepper button,.areas button,.swatches button,.emojis button,.msg,.composer textarea,.opt,.toast,.sos,.cal-day,.compose-bar .pill,.ig-actions > button:not(.btn),.nav a.create .plus,.notif .ico,.story .ring,.actionbar{border-radius:var(--r)}
+.list,.tile,.ctile,.club-tile,.composer-card,.stream,.facts,.meet,.people-list,.g-hero,.menu,.cal,.cal-row .ctile,.ig-media,.sheet{border-radius:0}
+.ob-progress i{border-radius:0}
+/* flat: no shadows, blur or gradients */
+.actionbar,.seg button[aria-pressed="true"],.areas button[aria-pressed="true"],.swatches button,.swatches button[aria-pressed="true"],.emojis button[aria-pressed="true"],.nav a.create[aria-current="page"] .plus,.sos.here,.cal-day.today,.story .ring,.story[aria-selected="true"] .ring,.story-add .ring,.story .new,.tl-dot,.sheet,.toast{box-shadow:none}
+.nav{background:var(--surface);-webkit-backdrop-filter:none;backdrop-filter:none}
+.sheet{border-top:1px solid var(--line)}
+.actionbar{border:1px solid var(--line)}
+.story[aria-selected="true"] .ring::before{display:none}
+/* buttons: orange fill for the main action, black outline for the rest */
+.btn-primary,.btn-join{background:var(--copper);color:var(--copper-ink);border-color:var(--copper)}
+.btn-ghost{background:var(--surface);border-color:var(--ink);color:var(--ink)}
+.btn-sm.btn-join,.btn-sm.btn-primary{background:var(--surface);color:var(--ink);border-color:var(--ink)}
+.iconbtn{background:var(--surface);border:1px solid var(--line)}
+/* chips, tags, banners */
+.chip{color:var(--ink);font-weight:400}
+.chip[aria-pressed="true"],.chip.on{background:var(--ink);border-color:var(--ink);color:var(--surface);font-weight:600}
+.tag{background:var(--surface);border:1px solid var(--line);color:var(--ink-2)}
+.tag-olive{background:var(--surface);color:var(--ink-2)}
+.tag-copper{background:var(--surface);color:var(--copper-text)}
+.banner{background:var(--surface);border:1px solid var(--line);color:var(--ink)}
+.foryou,.ig-act-media .when{color:var(--ink-2)}
+.arealine select{text-decoration-color:var(--ink);text-decoration-thickness:1px}
+/* inputs */
+.inp,.search input,.composer textarea{background:var(--surface);border:1px solid var(--line)}
+.inp:focus,.search input:focus,.composer textarea:focus{border-color:var(--ink);outline:2px solid var(--ink);outline-offset:-1px}
+.seg{background:var(--surface);border:1px solid var(--line);padding:3px}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.swatches button[aria-pressed="true"]{outline:2px solid var(--ink);outline-offset:2px}
+.cal-day.today{border:1px solid var(--ink)}
+/* people and feeds: photographs carry the colour; everything else stays black and white */
+.av{background:#43423f;color:#fff}
+.ig-media{background:var(--surface);color:var(--ink);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ig-act-media{background:var(--surface-2)}
+.story .ring{background:var(--surface);border:1px solid var(--line)}
+.story[aria-selected="true"] .ring{border:2px solid var(--ink)}
 </style>
 </head>
 <body>
@@ -514,17 +595,55 @@ document.documentElement.lang = LANG;
 const LOC = () => LANG === 'tr' ? 'tr-TR' : LANG === 'el' ? 'el-GR' : 'en-GB';
 const LANGS = [['en','English','EN'],['tr','Türkçe','TR'],['el','Ελληνικά','ΕΛ']];
 const TR = {
+"Add a photo":"Fotoğraf ekle",
+"Change photo":"Fotoğrafı değiştir",
+"Remove photo":"Fotoğrafı kaldır",
+"Uploading…":"Yükleniyor…",
+"Photo updated.":"Fotoğraf güncellendi.",
+"Photo removed.":"Fotoğraf kaldırıldı.",
+"That photo couldn’t be used. Try a JPG or PNG.":"Bu fotoğraf kullanılamadı. JPG ya da PNG dene.",
+"A clear photo of your face helps people recognise you when you meet. Only signed-in members can see it.":"Yüzünün net göründüğü bir fotoğraf, buluştuğunuzda insanların seni tanımasını kolaylaştırır. Yalnızca giriş yapmış üyeler görebilir.",
+"Optional. You can add or change it later in your profile.":"İsteğe bağlı. Daha sonra profilinden ekleyebilir ya da değiştirebilirsin.",
+"Remove your photo?":"Fotoğrafın kaldırılsın mı?",
+"People will see your initials instead.":"İnsanlar onun yerine adının baş harflerini görecek.",
+"Remove this person’s photo?":"Bu kişinin fotoğrafı kaldırılsın mı?",
+"Use this if the photo breaks the community rules. They can add a new one.":"Fotoğraf topluluk kurallarına uymuyorsa bunu kullan. Kişi yeni bir fotoğraf ekleyebilir.",
 "Appearance":"Görünüm",
 "Same as my device":"Cihazımla aynı",
 "Light":"Açık",
 "Dark":"Koyu",
-"Demo version.":"Demo sürümü.",
-"What you do here is saved only on this device, so other people won’t see it.":"Burada yaptıkların yalnızca bu cihazda kaydedilir, başkaları göremez.",
-"This is a demo. What you enter stays on this device.":"Bu bir demo. Girdiklerin bu cihazda kalır.",
-"Reset the demo":"Demoyu sıfırla",
-"Reset the demo?":"Demo sıfırlansın mı?",
-"Your profile, posts and activities on this device are removed, and the sample content comes back.":"Bu cihazdaki profilin, gönderilerin ve etkinliklerin silinir ve örnek içerik geri gelir.",
-"Reset":"Sıfırla",
+"Use your email to sign in or create an account. No password needed.":"Giriş yapmak veya hesap oluşturmak için e-postanı kullan. Şifre gerekmez.",
+"Email":"E-posta",
+"Send sign-in link":"Giriş bağlantısı gönder",
+"Sending…":"Gönderiliyor…",
+"Continue with Google":"Google ile devam et",
+"Continue with Apple":"Apple ile devam et",
+"Check your email":"E-postanı kontrol et",
+"We sent a sign-in link to {email}. Open it to sign in. If the email shows a 6-digit code, you can enter it here instead.":"{email} adresine bir giriş bağlantısı gönderdik. Giriş yapmak için bağlantıyı aç. E-postada 6 haneli bir kod varsa, onu buraya da girebilirsin.",
+"That sign-in link has expired or was already used. Enter your email to get a new one.":"Bu giriş bağlantısının süresi dolmuş ya da daha önce kullanılmış. Yenisini almak için e-postanı gir.",
+"6-digit code":"6 haneli kod",
+"Sign in":"Giriş yap",
+"Signing in…":"Giriş yapılıyor…",
+"Use a different email":"Başka bir e-posta kullan",
+"Enter a valid email address.":"Geçerli bir e-posta adresi gir.",
+"That code didn’t work. Check it and try again, or request a new link.":"Bu kod çalışmadı. Kontrol edip tekrar dene ya da yeni bir bağlantı iste.",
+"We couldn’t send the email. Wait a minute and try again.":"E-posta gönderilemedi. Bir dakika bekleyip tekrar dene.",
+"By continuing you confirm you’re 18 or older.":"Devam ederek 18 yaşında veya daha büyük olduğunu onaylarsın.",
+"You’re signed in, so you’re ready to set up your profile.":"Giriş yaptın, profilini oluşturmaya hazırsın.",
+"Account":"Hesap",
+"Sign out":"Çıkış yap",
+"Signed out.":"Çıkış yapıldı.",
+"Delete my account":"Hesabımı sil",
+"Delete your account?":"Hesabın silinsin mi?",
+"Your profile, posts, messages and activities are deleted for good. This can’t be undone.":"Profilin, gönderilerin, mesajların ve etkinliklerin kalıcı olarak silinir. Bu geri alınamaz.",
+"Delete account":"Hesabı sil",
+"Your account was deleted.":"Hesabın silindi.",
+"Setup needed":"Kurulum gerekli",
+"This site isn’t connected to its database yet. Open index.html, paste your Supabase Project URL and key into the lines near the top, and upload it again.":"Bu site henüz veritabanına bağlı değil. index.html dosyasını aç, en üstteki satırlara Supabase Project URL ve anahtarını yapıştır ve dosyayı yeniden yükle.",
+"That’s the secret key, which must never go in a website. Use the anon or publishable key instead, and reset the secret key in Supabase under Project Settings, API Keys.":"Bu gizli anahtar ve asla bir web sitesine konmamalı. Bunun yerine anon veya publishable anahtarı kullan ve gizli anahtarı Supabase’de Project Settings, API Keys bölümünden sıfırla.",
+"Can’t reach the server":"Sunucuya ulaşılamıyor",
+"Check your connection and reload the page.":"Bağlantını kontrol edip sayfayı yenile.",
+"You don’t have permission to do that.":"Bunu yapmaya iznin yok.",
 "Sample": "Örnek",
 "Preview mode.": "Önizleme modu.",
 "Nothing here is saved. Open this app from Claude while signed in to use shared activities.": "Burada hiçbir şey kaydedilmez. Paylaşılan etkinlikleri kullanmak için uygulamayı Claude’da oturum açıkken aç.",
@@ -1080,17 +1199,55 @@ const TR = {
 "Volunteering": "Gönüllülük"
 };
 const EL = {
+"Add a photo":"Πρόσθεσε φωτογραφία",
+"Change photo":"Άλλαξε φωτογραφία",
+"Remove photo":"Αφαίρεσε τη φωτογραφία",
+"Uploading…":"Ανέβασμα…",
+"Photo updated.":"Η φωτογραφία ενημερώθηκε.",
+"Photo removed.":"Η φωτογραφία αφαιρέθηκε.",
+"That photo couldn’t be used. Try a JPG or PNG.":"Αυτή η φωτογραφία δεν μπόρεσε να χρησιμοποιηθεί. Δοκίμασε JPG ή PNG.",
+"A clear photo of your face helps people recognise you when you meet. Only signed-in members can see it.":"Μια καθαρή φωτογραφία του προσώπου σου βοηθά τους άλλους να σε αναγνωρίσουν όταν βρεθείτε. Μόνο συνδεδεμένα μέλη μπορούν να τη δουν.",
+"Optional. You can add or change it later in your profile.":"Προαιρετικό. Μπορείς να την προσθέσεις ή να την αλλάξεις αργότερα στο προφίλ σου.",
+"Remove your photo?":"Να αφαιρεθεί η φωτογραφία σου;",
+"People will see your initials instead.":"Οι άλλοι θα βλέπουν τα αρχικά σου.",
+"Remove this person’s photo?":"Να αφαιρεθεί η φωτογραφία αυτού του ατόμου;",
+"Use this if the photo breaks the community rules. They can add a new one.":"Χρησιμοποίησέ το αν η φωτογραφία παραβιάζει τους κανόνες της κοινότητας. Το άτομο μπορεί να προσθέσει νέα.",
 "Appearance":"Εμφάνιση",
 "Same as my device":"Ίδιο με τη συσκευή μου",
 "Light":"Ανοιχτό",
 "Dark":"Σκούρο",
-"Demo version.":"Έκδοση επίδειξης.",
-"What you do here is saved only on this device, so other people won’t see it.":"Ό,τι κάνεις εδώ αποθηκεύεται μόνο σε αυτή τη συσκευή, οπότε οι άλλοι δεν το βλέπουν.",
-"This is a demo. What you enter stays on this device.":"Αυτό είναι demo. Ό,τι γράφεις μένει σε αυτή τη συσκευή.",
-"Reset the demo":"Επαναφορά του demo",
-"Reset the demo?":"Επαναφορά του demo;",
-"Your profile, posts and activities on this device are removed, and the sample content comes back.":"Το προφίλ, οι αναρτήσεις και οι δραστηριότητές σου σε αυτή τη συσκευή διαγράφονται και επιστρέφει το δείγμα περιεχομένου.",
-"Reset":"Επαναφορά",
+"Use your email to sign in or create an account. No password needed.":"Χρησιμοποίησε το email σου για σύνδεση ή δημιουργία λογαριασμού. Δεν χρειάζεται κωδικός.",
+"Email":"Email",
+"Send sign-in link":"Αποστολή συνδέσμου σύνδεσης",
+"Sending…":"Αποστολή…",
+"Continue with Google":"Συνέχεια με Google",
+"Continue with Apple":"Συνέχεια με Apple",
+"Check your email":"Έλεγξε το email σου",
+"We sent a sign-in link to {email}. Open it to sign in. If the email shows a 6-digit code, you can enter it here instead.":"Στείλαμε έναν σύνδεσμο σύνδεσης στο {email}. Άνοιξέ τον για να συνδεθείς. Αν το email έχει 6ψήφιο κωδικό, μπορείς να τον γράψεις και εδώ.",
+"That sign-in link has expired or was already used. Enter your email to get a new one.":"Αυτός ο σύνδεσμος σύνδεσης έχει λήξει ή έχει ήδη χρησιμοποιηθεί. Γράψε το email σου για να πάρεις νέο.",
+"6-digit code":"6ψήφιος κωδικός",
+"Sign in":"Σύνδεση",
+"Signing in…":"Σύνδεση…",
+"Use a different email":"Άλλο email",
+"Enter a valid email address.":"Βάλε ένα έγκυρο email.",
+"That code didn’t work. Check it and try again, or request a new link.":"Ο κωδικός δεν λειτούργησε. Έλεγξέ τον και δοκίμασε ξανά ή ζήτα νέο σύνδεσμο.",
+"We couldn’t send the email. Wait a minute and try again.":"Δεν μπορέσαμε να στείλουμε το email. Περίμενε ένα λεπτό και δοκίμασε ξανά.",
+"By continuing you confirm you’re 18 or older.":"Συνεχίζοντας επιβεβαιώνεις ότι είσαι 18 ετών ή μεγαλύτερος/η.",
+"You’re signed in, so you’re ready to set up your profile.":"Συνδέθηκες, είσαι έτοιμος/η να φτιάξεις το προφίλ σου.",
+"Account":"Λογαριασμός",
+"Sign out":"Αποσύνδεση",
+"Signed out.":"Αποσυνδέθηκες.",
+"Delete my account":"Διαγραφή του λογαριασμού μου",
+"Delete your account?":"Διαγραφή του λογαριασμού σου;",
+"Your profile, posts, messages and activities are deleted for good. This can’t be undone.":"Το προφίλ, οι αναρτήσεις, τα μηνύματα και οι δραστηριότητές σου διαγράφονται οριστικά. Δεν αναιρείται.",
+"Delete account":"Διαγραφή λογαριασμού",
+"Your account was deleted.":"Ο λογαριασμός σου διαγράφηκε.",
+"Setup needed":"Χρειάζεται ρύθμιση",
+"This site isn’t connected to its database yet. Open index.html, paste your Supabase Project URL and key into the lines near the top, and upload it again.":"Ο ιστότοπος δεν έχει συνδεθεί ακόμα με τη βάση δεδομένων. Άνοιξε το index.html, επικόλλησε το Project URL και το κλειδί του Supabase στις γραμμές στην αρχή και ανέβασέ το ξανά.",
+"That’s the secret key, which must never go in a website. Use the anon or publishable key instead, and reset the secret key in Supabase under Project Settings, API Keys.":"Αυτό είναι το μυστικό κλειδί και δεν πρέπει ποτέ να μπει σε ιστότοπο. Χρησιμοποίησε το anon ή το publishable κλειδί και κάνε επαναφορά του μυστικού κλειδιού στο Supabase, στο Project Settings, API Keys.",
+"Can’t reach the server":"Δεν υπάρχει σύνδεση με τον διακομιστή",
+"Check your connection and reload the page.":"Έλεγξε τη σύνδεσή σου και ανανέωσε τη σελίδα.",
+"You don’t have permission to do that.":"Δεν έχεις δικαίωμα να το κάνεις αυτό.",
 "Sample": "Δείγμα",
 "Preview mode.": "Λειτουργία προεπισκόπησης.",
 "Nothing here is saved. Open this app from Claude while signed in to use shared activities.": "Τίποτα εδώ δεν αποθηκεύεται. Άνοιξε την εφαρμογή από το Claude, συνδεδεμένος/η, για να χρησιμοποιήσεις κοινές δραστηριότητες.",
@@ -1731,7 +1888,7 @@ const I = {
 const THEMES = [['system', 'Same as my device'], ['light', 'Light'], ['dark', 'Dark']];
 const themeNow = () => document.documentElement.dataset.theme || 'system';
 const MM = 'M240 146 V100 Q240 74 266 74 Q292 74 292 100 V146 M292 100 Q292 74 318 74 Q344 74 344 100 V146 M344 100 Q344 74 370 74 Q396 74 396 100 V146 M396 100 Q396 74 422 74 Q448 74 448 100 V146';
-const logoSvg = (k, named) => `<svg viewBox="12 22 562 198" ${named ? 'role="img" aria-label="Gomma"' : 'aria-hidden="true"'}><defs>${[[220, 72], [292, 52], [344, 52], [396, 72]].map(([x, w], i) => `<clipPath id="${k}${i}"><rect x="${x}" y="0" width="${w}" height="230"/></clipPath>`).join('')}</defs><g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"><circle cx="56" cy="110" r="36" stroke="currentColor"/><path d="M92 74 V172 Q92 206 58 206 Q38 206 26 194" stroke="currentColor"/><circle cx="166" cy="110" r="36" stroke="currentColor"/>${[0, 1, 2, 3].map(i => `<path d="${MM}" clip-path="url(#${k}${i})" style="stroke:var(${i % 2 ? '--copper' : '--olive'})"/>`).join('')}<circle cx="524" cy="110" r="36" stroke="currentColor"/><path d="M560 74 V146" stroke="currentColor"/></g>${[266, 318, 370, 422].map((x, i) => `<circle cx="${x}" cy="40" r="15" style="fill:var(${i % 2 ? '--copper' : '--olive'})"/>`).join('')}</svg>`;
+const logoSvg = (k, named) => `<svg viewBox="12 22 562 198" ${named ? 'role="img" aria-label="Gomma"' : 'aria-hidden="true"'}><defs>${[[220, 72], [292, 52], [344, 52], [396, 72]].map(([x, w], i) => `<clipPath id="${k}${i}"><rect x="${x}" y="0" width="${w}" height="230"/></clipPath>`).join('')}</defs><g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"><circle cx="56" cy="110" r="36" stroke="currentColor"/><path d="M92 74 V172 Q92 206 58 206 Q38 206 26 194" stroke="currentColor"/><circle cx="166" cy="110" r="36" stroke="currentColor"/>${[0, 1, 2, 3].map(i => `<path d="${MM}" clip-path="url(#${k}${i})" style="stroke:var(${i % 2 ? '--logo-orange' : '--logo-teal'})"/>`).join('')}<circle cx="524" cy="110" r="36" stroke="currentColor"/><path d="M560 74 V146" stroke="currentColor"/></g>${[266, 318, 370, 422].map((x, i) => `<circle cx="${x}" cy="40" r="15" style="fill:var(${i % 2 ? '--logo-orange' : '--logo-teal'})"/>`).join('')}</svg>`;
 
 /* ---------- utilities ---------- */
 const $ = s => document.querySelector(s);
@@ -1794,97 +1951,6 @@ function ago(ts){
   return new Date(ts).toLocaleDateString(LOC(), {day:'numeric', month:'short'});
 }
 function plural(n, one, many){ if (LANG === 'tr') return `${n} ${t(one)}`; if (LANG === 'el') { const f = ELP[one]; return f ? `${n} ${n === 1 ? f[0] : f[1]}` : `${n} ${t(one)}`; } return `${n} ${n === 1 ? one : (many || one + 's')}`; }
-
-/* ---------- demo content (times are always relative to today) ---------- */
-const DEMO_KEY = 'fyp-demo-v1';
-const SAMPLE_DOC = /^(profiles|activities|posts|members|chats)\/sample-/;
-function demoSeed(){
-  const N = Date.now(), H = HOUR, M = MIN, D = DAY, docs = {};
-  const soon = (m, fh, fm) => { const x = new Date(N + m * M); x.setMinutes(Math.ceil(x.getMinutes() / 15) * 15, 0, 0); const sameDay = x.getDate() === new Date(N).getDate(), h = x.getHours(); if (sameDay && h >= 8 && h < 21) return x.getTime(); return on(new Date(N).getHours() < 8 ? 0 : 1, fh, fm || 0); };
-  const on = (days, hh, mm) => { const x = new Date(N); x.setDate(x.getDate() + days); x.setHours(hh, mm || 0, 0, 0); return x.getTime(); };
-  const E = 'sample-eleni', ME = 'sample-mert', A = 'sample-amara', NI = 'sample-nikos', DE = 'sample-defne', SA = 'sample-sam', YOU = 'demo-me';
-  const prof = (id, p) => { docs['profiles/' + id] = {adult:true, joinedAt:N - 10 * D, sample:true, invites:[], following:{}, ...p}; };
-  prof(E, {name:'Eleni K.', area:'famagusta', age:24, showAge:true, bio:'Physio student. Will trade coffee for a good trail.', interests:['Hiking','Sunset walks','Coffee','Photography','Beach volleyball','Swimming'], following:{[YOU]:N - 40 * M, [NI]:N - 3 * D, [A]:N - 3 * D}, invites:[{to:YOU, a:'smpsunset', t:N - 30 * M}]});
-  prof(ME, {name:'Mert A.', area:'famagusta', age:22, showAge:true, bio:'Computer engineering student. Always bringing a new board game.', interests:['Board games','Chess','Hiking','Tech & coding','Quiz nights','Coffee'], following:{[NI]:N - 2 * D, [E]:N - 2 * D}});
-  prof(A, {name:'Amara O.', area:'famagusta', age:21, showAge:true, bio:'International student from Lagos. Training for my first 10K.', interests:['Running','Beach volleyball','Dance','Student life','Swimming','Football'], following:{[E]:N - 3 * D, [SA]:N - 2 * D}});
-  prof(NI, {name:'Nikos P.', area:'nicosia', age:29, showAge:false, bio:'Weekend hiker, weekday accountant. I know where the shade is.', interests:['Hiking','Cycling','Photography','History & ruins','Day trips','Wine & meze'], following:{[E]:N - 3 * D}, invites:[{to:YOU, a:'smpkantara', t:N - 2 * H}]});
-  prof(DE, {name:'Defne T.', area:'kyrenia', age:26, showAge:true, bio:'Sea swimmer. Happiest before 8am.', interests:['Swimming','Snorkelling','Yoga','Beach days','Coffee','Sunset walks']});
-  prof(SA, {name:'Sam R.', area:'famagusta', age:23, showAge:true, bio:'Just moved here for my master’s. Looking for people to explore with.', interests:['Student life','Meeting new people','Live music','Quiz nights','Running','Coffee','Wine & meze'], following:{[A]:N - 2 * D, [ME]:N - D}});
-  const act = (id, org, o) => { (docs['activities/' + org] = docs['activities/' + org] || {items:{}}).items[id] = {vis:'public', comm:'', price:0, cur:'', area:'famagusta', status:'open', ...o, org}; };
-  act('smpcoffee', ME, {title:'Coffee and chat for new students', feed:'coffee', cat:'food', desc:'For anyone new to Famagusta. Come say hi, get café tips and meet a few people.', startAt:soon(90, 10, 30), dur:60, cap:8, spot:'Old town, near Namık Kemal Square', exact:'Outdoor tables at the corner café facing the square. Look for the olive-green flag.', comm:'unisocial', createdAt:N - 6 * H});
-  act('smpvolley', A, {title:'Casual beach volleyball', feed:'beach-volleyball', cat:'sports', desc:'Mixed levels, rotating teams. Courts are free, just bring water and sunscreen.', startAt:soon(150, 16), dur:120, cap:12, spot:'Glapsides Beach courts', exact:'Court 2, the one closest to the beach bar. I have two balls.', createdAt:N - 3 * H});
-  act('smpsunset', E, {title:'Walk along Palm Beach', feed:'sunset-walks', cat:'outdoor', desc:'Easy pace, about 4 km to the old town walls and back.', startAt:soon(240, 18, 30), dur:90, cap:10, spot:'Palm Beach promenade', exact:'By the lifeguard tower at the north end. I’ll be in a green jacket.', createdAt:N - 5 * H});
-  act('smprun', A, {title:'Easy 5 km seafront run', feed:'running', cat:'sports', desc:'Conversational pace, around 6:30 per km. Nobody gets left behind.', startAt:on(1, 8), dur:60, cap:15, spot:'Famagusta marina entrance', exact:'Next to the marina sign by the car park.', comm:'famagustarunners', createdAt:N - 26 * H});
-  act('smpswim', DE, {title:'Sea swim and coffee', feed:'swimming', cat:'sports', desc:'About 800 m along the shore, then coffee on the beach.', startAt:on(2, 8, 30), dur:90, cap:10, spot:'Silver Beach', exact:'Steps at the south end of the beach.', comm:'sundayswimmers', createdAt:N - 27 * H});
-  act('smpkantara', NI, {title:'Kantara castle hike', feed:'hiking', cat:'outdoor', desc:'About 7 km with 300 m of climbing, mostly shaded. We stop at the castle for snacks and photos. Bring 2 L of water.', startAt:on(2, 9), dur:240, cap:12, spot:'Kantara village square', exact:'Car park below the castle gate. Look for the orange backpack.', comm:'cyprushiking', createdAt:N - 23 * H});
-  act('smpboard', ME, {title:'Board game night: new games on the shelf', feed:'board-games', cat:'gaming', desc:'Bringing Cascadia and The Crew. Quick teach for every game, no experience needed.', startAt:on(4, 19), dur:180, cap:10, spot:'University social centre', exact:'Room 2 on the ground floor, past the café.', comm:'boardgamesociety', createdAt:N - 8 * H});
-  act('smpmeze', NI, {title:'Meze night in the old town', feed:'wine-meze', cat:'food', desc:'Long table, around 20 small dishes. Drinks are separate.', startAt:on(7, 20), dur:180, cap:10, price:18, cur:'EUR', spot:'A taverna inside the old town walls', exact:'Taverna name shared in the chat once the table is confirmed.', createdAt:N - 20 * H});
-  act('smpsunrise', NI, {title:'Sunrise hike on the Pentadaktylos ridge', feed:'hiking', cat:'outdoor', desc:'Early start, big views. Moderate, about 6 km.', startAt:on(8, 6, 30), dur:180, cap:10, area:'kyrenia', spot:'Buffavento road trailhead', exact:'Gravel lay-by at the start of the Buffavento road.', comm:'cyprushiking', createdAt:N - 2 * H});
-  const roster = (id, ids) => { docs['rosters/' + id] = {ids, at:Object.fromEntries(ids.map((u, i) => [u, N - (ids.length - i) * H]))}; };
-  roster('smpcoffee', [ME, SA, A]); roster('smpvolley', [A, E, ME, SA, DE]); roster('smpsunset', [E, DE, NI, A]); roster('smprun', [A, SA, E]);
-  roster('smpswim', [DE, E, A]); roster('smpkantara', [NI, E, ME, DE, A]); roster('smpboard', [ME, SA, A]); roster('smpmeze', [NI, SA, E, ME, DE]); roster('smpsunrise', [NI, E]);
-  const P = (f, x, t, re, ro) => re ? {f, x, t, re, ro} : {f, x, t};
-  docs['posts/' + E] = {items:{sp3:P('hiking', 'Sunrise from the Pentadaktylos ridge is unreal this time of year. Going again with Nikos next week if anyone wants to come.', N - 50 * M), sp7:P('sunset-walks', 'Palm Beach to the old town walls takes about 40 minutes at an easy pace. Best light is just before sunset.', N - 30 * H), sp1r1:P('hiking', 'I’m in! Is it OK for someone who hasn’t hiked much?', N - 25 * H, 'sp1', NI), sp8r2:P('coffee', 'Anywhere inside the old town walls. Go early, they fill up after 11.', N - 5 * H, 'sp8', SA)}, likes:{sp1:N - 25 * H, sp4:N - 2 * H, sp6:N - 90 * M, sp11:N - 26 * H}};
-  docs['posts/' + NI] = {items:{sp1:P('hiking', 'Did the Kantara castle loop last weekend. Mostly shaded after the first km, but bring 2 L of water. Going again with the Hiking Club, all welcome.', N - 26 * H), sp1r2:P('hiking', 'Definitely. We go slow and stop at the castle for snacks.', N - 24 * H, 'sp1', NI), sp2r1:P('hiking', 'The path from Salamis to the coast is flat and you can get there by bus. Not a mountain, but beautiful.', N - 4 * H, 'sp2', ME), sp9:P('wine-meze', 'Booking a long table for meze next week. Join the activity if you want a seat.', N - 20 * H)}, likes:{sp3:N - 40 * M, sp7:N - 29 * H}};
-  docs['posts/' + ME] = {items:{sp2:P('hiking', 'Any trails near Famagusta that don’t need a car? I don’t drive yet.', N - 5 * H), sp10:P('board-games', 'New on the shelf this week: Cascadia and The Crew. Bringing both to game night.', N - 8 * H), sp8r1:P('coffee', 'Come to my coffee meetup today, I’ll show you the good spots.', N - 330 * M, 'sp8', SA)}, likes:{sp1:N - 24 * H, sp6:N - 100 * M, sp4:N - 2 * H}};
-  docs['posts/' + A] = {items:{sp4:P('running', 'Training for my first 10K. Anyone want to do slow Saturday runs together? I’m at about 6:30 per km.', N - 3 * H), sp5r1:P('running', 'It’s lit up to the port, darker after that. Go with a group if you can.', N - 27 * H, 'sp5', SA), sp6:P('beach-volleyball', 'We need a few more for proper 6v6 games today. All levels welcome, honestly none of us are good.', N - 2 * H), sp12:P('student-life', 'Anyone from the international dorms want to start a weekly football kickabout?', N - 30 * H)}, likes:{sp2:N - 4 * H, sp11:N - 26 * H, sp10:N - 7 * H}};
-  docs['posts/' + DE] = {items:{sp11:P('swimming', 'Water was lovely this morning. Still perfect for early swims.', N - 27 * H)}, likes:{sp3:N - 30 * M, sp7:N - 28 * H, sp1:N - 23 * H}};
-  docs['posts/' + SA] = {items:{sp5:P('running', 'Is the seafront path lit in the evening? Thinking of running after class.', N - 28 * H), sp8:P('coffee', 'Just moved to Famagusta for my master’s. Where’s a good quiet café to work from?', N - 6 * H), sp4r1:P('running', 'Same pace here! See you Saturday.', N - 150 * M, 'sp4', A), sp12r1:P('student-life', 'Yes please. I can bring a ball.', N - 29 * H, 'sp12', A)}, likes:{sp4:N - 2 * H, sp6:N - 80 * M}};
-  const mem = (u, cs) => { docs['members/' + u] = {c:Object.fromEntries(cs.map(c => [c, N - 5 * D]))}; };
-  mem(E, ['cyprushiking','sundayswimmers','cyprusphoto']); mem(ME, ['boardgamesociety','unisocial','cyprushiking']); mem(A, ['famagustarunners','unisocial','sundayswimmers']);
-  mem(NI, ['cyprushiking','cyprusphoto']); mem(DE, ['sundayswimmers']); mem(SA, ['unisocial','famagustarunners','boardgamesociety']);
-  docs['chats/' + A] = {a:{smpvolley:[{t:N - 90 * M, x:'Courts are free all afternoon. I’m bringing two balls and a speaker.'}]}};
-  docs['chats/' + ME] = {a:{smpvolley:[{t:N - 70 * M, x:'Coming straight from my lab, might be 10 minutes late.'}], smpcoffee:[{t:N - 3 * H, x:'I’ll grab the big table outside. Look for the green flag!'}]}};
-  docs['chats/' + E] = {a:{smpvolley:[{t:N - 40 * M, x:'I’ll bring sunscreen to share.'}], smpsunset:[{t:N - 4 * H, x:'Hi all! I’ll be by the lifeguard tower in a green jacket.'}]}};
-  docs['chats/' + NI] = {a:{smpkantara:[{t:N - 20 * H, x:'Car-share from Famagusta at 8:15. I have 3 seats.'}]}};
-  const club = (id, o) => { docs['communities/' + id] = {createdBy:'seed', admins:[], announcements:[], createdAt:N - 30 * D, ...o}; };
-  club('cyprushiking', {name:'Cyprus Hiking Club', desc:'Weekend trails across the island, from the Kyrenia range to the Akamas coast. All paces welcome, and we regroup at every junction.', feed:'hiking', cat:'outdoor', area:'cyprus', emoji:'🥾', color:'olive', admins:[NI], announcements:[{by:NI, x:'The Kantara hike is on. Meet at 9:00 at the village square. Car-sharing is sorted in the activity chat.', t:N - 22 * H}]});
-  club('famagustarunners', {name:'Famagusta Runners', desc:'Easy-paced group runs along the seafront. 5 km and 10 km groups, and nobody gets left behind.', feed:'running', cat:'sports', area:'famagusta', emoji:'🏃', color:'copper', admins:[A], announcements:[{by:A, x:'Saturday runs start at 8:00 from the marina. Two groups: 5 km and 10 km.', t:N - 30 * H}]});
-  club('sundayswimmers', {name:'Sunday Swimmers', desc:'Sea swims every Sunday morning, then coffee on the beach. Bring a bright swim cap.', feed:'swimming', cat:'sports', area:'famagusta', emoji:'🏊', color:'sea', admins:[DE]});
-  club('boardgamesociety', {name:'Board Game Society', desc:'Weekly game nights with a shelf of games to try. New players get a quick teach before every game.', feed:'board-games', cat:'gaming', area:'famagusta', emoji:'🎲', color:'plum', admins:[ME], announcements:[{by:ME, x:'Game nights now start at 19:00 so people can come after class.', t:N - 50 * H}]});
-  club('cyprusphoto', {name:'Cyprus Photography Club', desc:'Photo walks through old towns, harbours and sunsets. Phones and cameras both welcome.', feed:'photography', cat:'arts', area:'cyprus', emoji:'📷', color:'sand'});
-  club('unisocial', {name:'University Social Club', desc:'Meetups for students who want to meet people beyond their course. Coffee, quiz nights and day trips.', feed:'student-life', cat:'social', area:'famagusta', emoji:'🎓', color:'rose'});
-  return docs;
-}
-
-/* ---------- in-memory store for preview mode ---------- */
-class MemDB {
-  constructor(){ this.m = new Map(); this.subs = new Set(); }
-  _emit(){ for (const f of [...this.subs]) f(); this._persist(); }
-  loadDemo(){
-    for (const [k, v] of Object.entries(demoSeed())) this.m.set(k, v);
-    try { const saved = JSON.parse(localStorage.getItem(DEMO_KEY) || '{}'); for (const [k, v] of Object.entries(saved)) if (!SAMPLE_DOC.test(k)) this.m.set(k, v); } catch (e) {}
-  }
-  _persist(){
-    clearTimeout(this._pt);
-    this._pt = setTimeout(() => { try { const out = {}; for (const [k, v] of this.m) if (!SAMPLE_DOC.test(k)) out[k] = v; localStorage.setItem(DEMO_KEY, JSON.stringify(out)); } catch (e) {} }, 300);
-  }
-  _snap(p){ const d = this.m.get(p); return {id:p.split('/').pop(), exists:!!d, data:() => d ? JSON.parse(JSON.stringify(d)) : undefined, metadata:{fromCache:false, hasPendingWrites:false}}; }
-  doc(p){
-    const s = this;
-    return {
-      id: p.split('/').pop(), path: p,
-      get: async () => s._snap(p),
-      set: async d => { s.m.set(p, JSON.parse(JSON.stringify(d))); setTimeout(() => s._emit()); },
-      update: async d => { if (!s.m.has(p)) throw {code:'invalid_argument'}; s.m.set(p, Object.assign({}, s.m.get(p), JSON.parse(JSON.stringify(d)))); setTimeout(() => s._emit()); },
-      delete: async () => { s.m.delete(p); setTimeout(() => s._emit()); },
-      acquire: async () => ({acquired:true}),
-      onSnapshot(next){ const f = () => next(s._snap(p)); s.subs.add(f); setTimeout(f); return () => s.subs.delete(f); },
-      collection: sub => s.collection(p + '/' + sub),
-    };
-  }
-  collection(p){
-    const s = this, depth = p.split('/').length + 1;
-    return {
-      path: p,
-      doc: id => s.doc(p + '/' + (id || newId())),
-      onSnapshot(next){
-        const f = () => { const docs = []; for (const k of s.m.keys()) if (k.startsWith(p + '/') && k.split('/').length === depth) docs.push(s._snap(k)); next({docs, size:docs.length, empty:!docs.length, docChanges:() => [], metadata:{fromCache:false, hasPendingWrites:false}}); };
-        s.subs.add(f); setTimeout(f); return () => s.subs.delete(f);
-      },
-    };
-  }
-}
 
 /* ---------- state ---------- */
 const S = {
@@ -2021,7 +2087,8 @@ function av(uid, size = 36){
   const n = nameOf(uid);
   const init = (n.match(/\p{L}/gu) ? n.split(/\s+/).map(w => (w.match(/\p{L}/u) || [''])[0]).join('').slice(0, 2) : '?').toUpperCase() || '?';
   const col = (pl && pl.color) || AV_COLORS[hashStr(uid) % AV_COLORS.length];
-  const photo = pl && pl.avatarUrl && !String(pl.avatarUrl).startsWith('data:') ? pl.avatarUrl : '';
+  const pr = S.profiles[uid];
+  const photo = (pr && pr.photo && PHOTO[pr.photo]) || (uid === S.me && S.ob && S.ob.photoPreview) || (pl && pl.avatarUrl && !String(pl.avatarUrl).startsWith('data:') ? pl.avatarUrl : '');
   return `<span class="av" style="--s:${size}px;--c:${esc(col)}" aria-hidden="true">${photo ? `<img src="${esc(photo)}" alt="">` : esc(init)}</span>`;
 }
 
@@ -2047,145 +2114,257 @@ function notifications(){
 }
 const unreadCount = () => notifications().filter(n => n.t > (S.prefs.seenAt || 0)).length;
 
-/* ---------- writes ---------- */
-const queues = {}, lastW = {};
-function enqueue(path, fn){ const p = (queues[path] || Promise.resolve()).catch(() => {}).then(fn); queues[path] = p; return p; }
-async function retry(fn){ try { return await fn(); } catch (e) { if (e && e.code === 'unavailable') { await sleep(400 + Math.random() * 600); return fn(); } throw e; } }
-function baseOf(path, snap){
-  const lw = lastW[path];
-  const b = (lw && (!snap || (snap._w || 0) < lw._w)) ? clone(lw) : clone(snap);
-  delete b.id;
-  return b;
+/* ---------- data (Supabase) ---------- */
+const CFG = window.FYP_CONFIG || {};
+const KEY_IS_SECRET = (() => { const k = String(CFG.supabaseAnonKey || ''); if (k.startsWith('sb_secret_')) return true; try { return JSON.parse(atob(k.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'))).role === 'service_role'; } catch (e) { return false; } })();
+const CFG_OK = !!(CFG.supabaseUrl && CFG.supabaseAnonKey && !/PASTE-YOUR/.test(CFG.supabaseUrl + CFG.supabaseAnonKey) && !KEY_IS_SECRET);
+const BOOT_URL = location.search + location.hash;   // read before the sign-in library tidies the address
+const sb = (CFG_OK && window.supabase && window.supabase.createClient)
+  ? window.supabase.createClient(CFG.supabaseUrl, CFG.supabaseAnonKey, {auth:{flowType:'implicit', persistSession:true, autoRefreshToken:true, detectSessionInUrl:true}})
+  : null;
+const R = {profiles:[], follows:[], invites:[], activities:[], secrets:[], participants:[], clubs:[], members:[], announcements:[], posts:[], likes:[], messages:[], saves:[], blocks:[], settings:null, mod:false, reports:[]};
+const msOf = x => x ? Date.parse(x) : 0;
+const iso = ms => new Date(ms).toISOString();
+async function rows(q){ const { data, error } = await q; if (error) throw error; return data || []; }
+async function must(q){ const { data, error } = await q; if (error) throw error; return data; }
+const LOADERS = {
+  profiles: async () => {
+    [R.profiles, R.follows, R.invites] = await Promise.all([
+      rows(sb.from('profiles').select('id,name,bio,area,interests,age,show_age,is_sample,created_at,avatar_path').limit(5000)),
+      rows(sb.from('follows').select('follower,followee,created_at').limit(20000)),
+      rows(sb.from('invites').select('sender,recipient,activity_id,created_at').limit(5000)),
+    ]);
+  },
+  acts: async () => {
+    [R.activities, R.secrets, R.participants] = await Promise.all([
+      rows(sb.from('activities').select('*').gte('start_at', iso(Date.now() - 60 * DAY)).order('start_at').limit(3000)),
+      rows(sb.from('activity_secrets').select('activity_id,exact').limit(3000)),
+      rows(sb.from('participants').select('activity_id,user_id,joined_at').limit(20000)),
+    ]);
+  },
+  clubs: async () => {
+    [R.clubs, R.members, R.announcements] = await Promise.all([
+      rows(sb.from('clubs').select('*').limit(2000)),
+      rows(sb.from('club_members').select('club_id,user_id,role,joined_at').limit(20000)),
+      rows(sb.from('announcements').select('id,club_id,author,body,created_at').order('created_at', {ascending:false}).limit(1000)),
+    ]);
+  },
+  posts: async () => {
+    [R.posts, R.likes] = await Promise.all([
+      rows(sb.from('posts').select('id,author,feed,body,parent_id,created_at').order('created_at', {ascending:false}).limit(1000)),
+      rows(sb.from('post_likes').select('post_id,user_id').limit(20000)),
+    ]);
+  },
+  messages: async () => {
+    R.messages = await rows(sb.from('messages').select('id,activity_id,author,body,created_at').gte('created_at', iso(Date.now() - 30 * DAY)).order('created_at').limit(5000));
+  },
+  mine: async () => {
+    const [saves, blocks, settings, mod] = await Promise.all([
+      rows(sb.from('saves').select('activity_id').eq('user_id', S.me)),
+      rows(sb.from('blocks').select('blocked').eq('blocker', S.me)),
+      rows(sb.from('user_settings').select('*').eq('user_id', S.me).limit(1)),
+      rows(sb.from('moderators').select('user_id').eq('user_id', S.me).limit(1)),
+    ]);
+    R.saves = saves; R.blocks = blocks; R.settings = settings[0] || null; R.mod = mod.length > 0;
+    R.reports = R.mod ? await rows(sb.from('reports').select('*').order('created_at', {ascending:false}).limit(500)) : [];
+  },
+};
+/* turn database rows into the shapes the screens use */
+function build(){
+  const profiles = {};
+  for (const p of R.profiles) profiles[p.id] = {name:p.name, photo:p.avatar_path || '', bio:p.bio || '', area:p.area, interests:p.interests || [], age:p.age, showAge:p.show_age, adult:true, sample:p.is_sample, following:{}, invites:[], joinedAt:msOf(p.created_at)};
+  if (profiles[S.me] && !profiles[S.me].age && R.settings && R.settings.age) profiles[S.me].age = R.settings.age;
+  for (const f of R.follows) if (profiles[f.follower]) profiles[f.follower].following[f.followee] = msOf(f.created_at);
+  for (const i of R.invites) if (profiles[i.sender]) profiles[i.sender].invites.push({to:i.recipient, a:i.activity_id, t:msOf(i.created_at)});
+  const secrets = {};
+  for (const x of R.secrets) secrets[x.activity_id] = x.exact;
+  const acts = {};
+  for (const a of R.activities) acts[a.id] = {id:a.id, title:a.title, feed:a.feed || '', cat:a.cat, desc:a.description || '', startAt:msOf(a.start_at), dur:a.duration_min,
+    price:Number(a.price) || 0, cur:a.currency || '', cap:a.capacity, area:a.area, spot:a.spot, exact:secrets[a.id] || '',
+    vis:a.visibility === 'club' ? 'community' : a.visibility, comm:a.club_id || '', org:a.host, createdAt:msOf(a.created_at), status:a.status, cancelledAt:msOf(a.cancelled_at)};
+  const rosters = {};
+  for (const p of [...R.participants].sort((x, y) => msOf(x.joined_at) - msOf(y.joined_at))) {
+    const r = rosters[p.activity_id] || (rosters[p.activity_id] = {ids:[], at:{}});
+    r.ids.push(p.user_id); r.at[p.user_id] = msOf(p.joined_at);
+  }
+  const comms = {}, members = {};
+  for (const c of R.clubs) comms[c.id] = {id:c.id, name:c.name, desc:c.description, feed:c.feed, cat:c.cat, area:c.area, emoji:c.emoji, color:c.color, createdBy:c.created_by || 'seed', admins:[], announcements:[], createdAt:msOf(c.created_at)};
+  for (const m of R.members) {
+    if (comms[m.club_id] && m.role === 'admin') comms[m.club_id].admins.push(m.user_id);
+    (members[m.user_id] = members[m.user_id] || {c:{}}).c[m.club_id] = msOf(m.joined_at);
+  }
+  for (const an of [...R.announcements].reverse()) if (comms[an.club_id]) comms[an.club_id].announcements.push({id:an.id, by:an.author, x:an.body, t:msOf(an.created_at)});
+  const posts = {}, likes = {};
+  for (const p of R.posts) if (FEED[p.feed]) posts[p.id] = {id:p.id, by:p.author, f:p.feed, x:p.body, t:msOf(p.created_at), re:p.parent_id || undefined};
+  for (const p of Object.values(posts)) if (p.re) p.ro = posts[p.re] ? posts[p.re].by : undefined;
+  for (const l of R.likes) (likes[l.post_id] = likes[l.post_id] || []).push(l.user_id);
+  const chats = {};
+  for (const m of R.messages) { const u = chats[m.author] || (chats[m.author] = {}); (u[m.activity_id] = u[m.activity_id] || []).push({t:msOf(m.created_at), x:m.body}); }
+  const reports = {};
+  for (const r of R.reports) { const k = r.reporter || 'deleted'; (reports[k] = reports[k] || {items:[]}).items.push({kind:r.kind, target:r.target, reason:r.reason, note:r.note, t:msOf(r.created_at)}); }
+  Object.assign(S, {profiles, acts, rosters, comms, members, posts, likes, chats, reports,
+    prefs:{saved:R.saves.map(x => x.activity_id), blocked:R.blocks.map(x => x.blocked), seenAt:msOf(R.settings && R.settings.seen_at)},
+    canEdit:R.mod, isOwner:R.mod});
+  loadPhotos();   // fetch viewing links for any new photos
 }
-function writeDoc(path, getSnap, mutate){
-  return enqueue(path, () => retry(async () => {
-    const cur = baseOf(path, getSnap());
-    const next = mutate(cur) || cur;
-    next._w = Date.now();
-    await S.db.doc(path).set(next);
-    lastW[path] = next;
-  }));
+const loadTimers = {};
+async function runLoad(group){ try { await LOADERS[group](); build(); schedule(); } catch (e) { console.warn('load', group, e); } }
+function refresh(group, now){
+  if (!sb || !S.hasId) return Promise.resolve();
+  if (now) { clearTimeout(loadTimers[group]); return runLoad(group); }
+  clearTimeout(loadTimers[group]); loadTimers[group] = setTimeout(() => runLoad(group), 250);
+  return Promise.resolve();
+}
+async function loadAll(){ await Promise.all(Object.keys(LOADERS).map(g => LOADERS[g]())); build(); S.loaded = {profiles:true, acts:true}; }
+const TABLE_GROUP = {profiles:'profiles', follows:'profiles', invites:'profiles', activities:'acts', activity_secrets:'acts', participants:'acts',
+  clubs:'clubs', club_members:'clubs', announcements:'clubs', posts:'posts', post_likes:'posts', messages:'messages'};
+let channel = null;
+function listen(){
+  channel = sb.channel('fyp-live');
+  for (const table of Object.keys(TABLE_GROUP)) channel.on('postgres_changes', {event:'*', schema:'public', table}, () => refresh(TABLE_GROUP[table]));
+  channel.subscribe();
+}
+function stopListening(){ if (channel) { sb.removeChannel(channel); channel = null; } }
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && S.hasId) Object.keys(LOADERS).forEach(g => refresh(g)); });
+setInterval(() => { if (S.hasId && document.visibilityState === 'visible') ['acts', 'messages', 'posts'].forEach(g => refresh(g)); }, 120000);
+
+/* ---------- writes ---------- */
+function writeErr(e){
+  console.warn(e);
+  const code = e && e.code, msg = String((e && e.message) || '');
+  if (code === '42501' || /row-level security|permission denied/i.test(msg)) toast(t('You don’t have permission to do that.'));
+  else toast(t('That didn’t save. Check your connection and try again.'));
 }
 async function attempt(fn){
-  if (!S.canWrite) { toast(t('You can look around, but your access doesn’t allow changes.')); return false; }
-  try { await fn(); return true; } catch (e) { handleWriteErr(e); return false; }
+  if (!sb || !S.hasId) return false;
+  try { await fn(); return true; } catch (e) { writeErr(e); return false; }
 }
-function handleWriteErr(e){
-  const code = e && e.code;
-  if (code === 'invalid_argument' && !S.writeKnown) { S.canWrite = false; toast(t('That wasn’t saved. Your access lets you browse only.')); }
-  else if (code === 'quota_exceeded') toast(t('Storage is full, so that wasn’t saved. Remove old items and try again.'));
-  else if (code === 'resource_exhausted') toast(t('Too many changes at once. Wait a moment and try again.'));
-  else if (code === 'revoked') { S.revoked = true; }
-  else toast(t('That didn’t save. Check your connection and try again.'));
-  console.warn(e);
-  schedule();
-}
-const saveMyProfile = mutate => writeDoc('profiles/' + S.me, () => S.profiles[S.me], mutate);
-const savePrefs = mutate => writeDoc(`data/users/${S.me}/prefs`, () => S.prefsRaw, mutate);
-const saveMembers = mutate => writeDoc('members/' + S.me, () => S.members[S.me], mutate);
-const savePosts = mutate => writeDoc('posts/' + S.me, () => S.postRaw[S.me], mutate);
-function prunePosts(d){
-  const items = d.items || {};
-  Object.keys(items).sort((a, b) => (items[b].t || 0) - (items[a].t || 0)).forEach((k, i) => { if (i >= 300 || Date.now() - (items[k].t || 0) > 120 * DAY) delete items[k]; });
-  d.items = items;
-  const lk = Object.keys(d.likes || {});
-  if (lk.length > 500) lk.sort((a, b) => d.likes[a] - d.likes[b]).slice(0, lk.length - 500).forEach(k => delete d.likes[k]);
-  return d;
-}
-const saveMyActs = mutate => writeDoc('activities/' + S.me, () => S.actRaw[S.me], mutate);
 
-/* roster changes are serialised with a short lease so capacity holds */
-async function rosterTxn(actId, mutate){
-  const a = S.acts[actId]; if (!a) return 'missing';
-  const ref = S.db.doc('rosters/' + actId);
-  for (let i = 0; i < 8; i++) {
-    let lease;
-    try { lease = await ref.acquire({holder:S.me, ttlMs:1500}); }
-    catch (e) { if (e && e.code === 'unavailable') { await sleep(500); continue; } throw e; }
-    if (!lease || !lease.acquired) {
-      const wait = lease && lease.expiresAt ? Math.min(2500, Math.max(150, Date.parse(lease.expiresAt) - Date.now())) : 500;
-      await sleep(wait + Math.random() * 250);
-      continue;
+/* ---------- profile photos ---------- */
+// Photos live in a private storage space. Signed-in members see them through temporary links.
+const PHOTO = {};                 // storage path -> temporary viewing link
+let photoLoading = false;
+async function loadPhotos(){
+  if (!sb || !S.hasId || photoLoading) return;
+  const paths = [...new Set(Object.values(S.profiles).map(x => x && x.photo).filter(Boolean))].filter(x => !PHOTO[x]);
+  if (!paths.length) return;
+  photoLoading = true;
+  try {
+    for (let i = 0; i < paths.length; i += 100) {
+      const { data, error } = await sb.storage.from('avatars').createSignedUrls(paths.slice(i, i + 100), 60 * 60 * 24 * 7);
+      if (error) { console.warn(error); break; }
+      (data || []).forEach(x => { if (x && x.path && x.signedUrl) PHOTO[x.path] = x.signedUrl; });
     }
-    const snap = await ref.get();
-    const d = snap.exists ? clone(snap.data()) : {};
-    const cur = {ids: Array.isArray(d.ids) ? d.ids.filter(x => typeof x === 'string') : [a.org], at: d.at || {[a.org]: a.createdAt || Date.now()}, org:a.org};
-    if (!cur.ids.includes(a.org)) cur.ids.unshift(a.org);
-    const res = mutate(cur);
-    if (res) return res;
-    await ref.set(cur);
-    return 'ok';
-  }
-  return 'busy';
+  } catch (e) { console.warn(e); }
+  photoLoading = false;
+  render();
+}
+// Redraws the picture as a square JPEG. This also strips hidden details such as the GPS location.
+async function photoBlob(file){
+  if (!file || !/^image\//.test(file.type || '')) throw new Error('not-image');
+  const url = URL.createObjectURL(file);
+  try {
+    const img = await new Promise((ok, bad) => { const i = new Image(); i.onload = () => ok(i); i.onerror = bad; i.src = url; });
+    const side = Math.min(img.naturalWidth, img.naturalHeight);
+    if (!side) throw new Error('not-image');
+    const out = Math.min(480, side), c = document.createElement('canvas');
+    c.width = c.height = out;
+    const g = c.getContext('2d'); g.fillStyle = '#ffffff'; g.fillRect(0, 0, out, out);
+    g.drawImage(img, (img.naturalWidth - side) / 2, (img.naturalHeight - side) / 2, side, side, 0, 0, out, out);
+    return await new Promise((ok, bad) => c.toBlob(b => b ? ok(b) : bad(new Error('encode')), 'image/jpeg', 0.85));
+  } finally { URL.revokeObjectURL(url); }
+}
+async function setMyPhoto(blob, quiet){   // blob = new photo, null = remove
+  const old = (myProfile() || {}).photo || '';
+  let path = null;
+  S.photoBusy = true; render();
+  const ok = await attempt(async () => {
+    if (blob) {
+      path = S.me + '/' + Date.now() + '.jpg';
+      const { error } = await sb.storage.from('avatars').upload(path, blob, {contentType:'image/jpeg', upsert:false});
+      if (error) throw error;
+    }
+    await must(sb.from('profiles').update({avatar_path:path}).eq('id', S.me));
+  });
+  if (ok && old && old !== path) { try { await sb.storage.from('avatars').remove([old]); } catch (e) {} }
+  S.photoBusy = false;
+  if (ok) { await refresh('profiles', true); if (!quiet) toast(blob ? t('Photo updated.') : t('Photo removed.')); }
+  render();
+  return ok;
+}
+async function removeTheirPhoto(uid){     // moderators only
+  const path = (S.profiles[uid] || {}).photo;
+  const ok = await attempt(async () => { await must(sb.rpc('remove_profile_photo', {p_user:uid})); });
+  if (ok && path) { try { await sb.storage.from('avatars').remove([path]); } catch (e) {} }
+  if (ok) { await refresh('profiles', true); toast(t('Photo removed.')); }
+}
+function photoPicker(kind, has){
+  const busy = kind !== 'ob' && S.photoBusy;
+  return `<div class="photo-edit">${av(S.me, 84)}<div class="photo-btns">
+    <label class="btn btn-ghost btn-sm photo-pick${busy ? ' is-busy' : ''}">${busy ? t('Uploading…') : (has ? t('Change photo') : t('Add a photo'))}<input type="file" accept="image/*" class="vh" data-photo="${kind}" ${busy ? 'disabled' : ''}></label>
+    ${has && !busy ? `<button class="btn btn-ghost btn-sm" data-act="${kind === 'ob' ? 'ob-photo-clear' : 'photo-remove'}">${t('Remove photo')}</button>` : ''}
+  </div></div>`;
 }
 
 /* ---------- actions ---------- */
 async function joinAct(id){
   const a = S.acts[id]; if (!a) return;
   if (!isOpen(a)) return toast(t('This activity is no longer open.'));
-  if (!S.canWrite) return toast(t('You can look around, but your access doesn’t allow joining.'));
   S.busy[id] = true; render();
-  let res;
-  try {
-    res = await rosterTxn(id, cur => {
-      if (cur.ids.includes(S.me)) return 'already';
-      if (cur.ids.length >= a.cap) return 'full';
-      cur.ids.push(S.me); cur.at[S.me] = Date.now();
-    });
-  } catch (e) { handleWriteErr(e); }
+  let res = '';
+  const ok = await attempt(async () => { res = await must(sb.rpc('join_activity', {p_activity:id})); });
   S.busy[id] = false;
-  if (res === 'ok') toast(t('You’re in. Meeting point and group chat unlocked.'));
-  else if (res === 'already') toast(t('You’ve already joined this one.'));
-  else if (res === 'full') toast(t('It just filled up. Save it in case a spot opens.'));
-  else if (res === 'busy') toast(t('Lots of people joining right now. Try again in a moment.'));
+  if (ok) {
+    if (res === 'ok') toast(t('You’re in. Meeting point and group chat unlocked.'));
+    else if (res === 'already') toast(t('You’ve already joined this one.'));
+    else if (res === 'full') toast(t('It just filled up. Save it in case a spot opens.'));
+    else toast(t('This activity is no longer open.'));
+  }
+  await Promise.all([refresh('acts', true), refresh('messages', true)]);
   render();
 }
 async function leaveAct(id, uid = S.me){
   S.busy[id] = true; render();
-  let res;
-  try {
-    res = await rosterTxn(id, cur => {
-      if (!cur.ids.includes(uid)) return 'notin';
-      cur.ids = cur.ids.filter(x => x !== uid); delete cur.at[uid];
-    });
-  } catch (e) { handleWriteErr(e); }
+  const ok = await attempt(async () => { await must(sb.from('participants').delete().eq('activity_id', id).eq('user_id', uid)); });
   S.busy[id] = false;
-  if (res === 'ok') toast(uid === S.me ? t('You left the activity. Your spot is free for someone else.') : t('{name} was removed from the activity.', {name:nameOf(uid)}));
-  render();
+  if (ok) toast(uid === S.me ? t('You left the activity. Your spot is free for someone else.') : t('{name} was removed from the activity.', {name:nameOf(uid)}));
+  await refresh('acts', true); render();
 }
 async function cancelAct(id){
-  const ok = await attempt(() => saveMyActs(d => { const it = d.items && d.items[id]; if (it) { it.status = 'cancelled'; it.cancelledAt = Date.now(); } return d; }));
-  if (ok) toast(t('Activity cancelled. Everyone who joined will see it in their notifications.'));
+  const ok = await attempt(async () => { await must(sb.from('activities').update({status:'cancelled', cancelled_at:iso(Date.now())}).eq('id', id)); });
+  if (ok) { toast(t('Activity cancelled. Everyone who joined will see it in their notifications.')); await refresh('acts', true); render(); }
 }
 async function toggleSave(id){
   const on = (S.prefs.saved || []).includes(id);
-  const ok = await attempt(() => savePrefs(d => { const s = new Set(d.saved || []); on ? s.delete(id) : s.add(id); d.saved = [...s].slice(-200); return d; }));
-  if (ok) toast(on ? t('Removed from saved.') : t('Saved. Find it later on your profile.'));
+  const ok = await attempt(async () => { await must(on ? sb.from('saves').delete().eq('user_id', S.me).eq('activity_id', id) : sb.from('saves').insert({user_id:S.me, activity_id:id})); });
+  if (ok) { toast(on ? t('Removed from saved.') : t('Saved. Find it later on your profile.')); await refresh('mine', true); render(); }
 }
 async function setFollow(uid, on){
-  const ok = await attempt(() => saveMyProfile(p => { p.following = p.following || {}; if (on) p.following[uid] = Date.now(); else delete p.following[uid]; return p; }));
+  const ok = await attempt(async () => { await must(on ? sb.from('follows').insert({follower:S.me, followee:uid}) : sb.from('follows').delete().eq('follower', S.me).eq('followee', uid)); });
   if (!ok) return;
+  await refresh('profiles', true);
   if (on) toast(follows(uid, S.me) ? t('You and {name} are now connected.', {name:firstName(nameOf(uid))}) : t('Connection request sent to {name}.', {name:firstName(nameOf(uid))}));
   else toast(t('Connection removed.'));
+  render();
 }
 async function blockUser(uid){
   const ok = await attempt(async () => {
-    await savePrefs(d => { d.blocked = uniq([...(d.blocked || []), uid]); return d; });
-    if (follows(S.me, uid)) await saveMyProfile(p => { if (p.following) delete p.following[uid]; return p; });
+    await must(sb.from('blocks').insert({blocker:S.me, blocked:uid}));
+    await must(sb.from('follows').delete().eq('follower', S.me).eq('followee', uid));
   });
-  if (ok) { S.sheet = null; toast(t('Blocked. You won’t see their profile, activities or messages.')); render(); }
+  if (ok) { S.sheet = null; toast(t('Blocked. You won’t see their profile, activities or messages.')); await Promise.all([refresh('mine', true), refresh('profiles', true)]); render(); }
 }
 async function unblockUser(uid){
-  const ok = await attempt(() => savePrefs(d => { d.blocked = (d.blocked || []).filter(x => x !== uid); return d; }));
-  if (ok) toast(t('Unblocked.'));
+  const ok = await attempt(async () => { await must(sb.from('blocks').delete().eq('blocker', S.me).eq('blocked', uid)); });
+  if (ok) { toast(t('Unblocked.')); await refresh('mine', true); render(); }
 }
 async function sendInvite(uid, aid){
-  const ok = await attempt(() => saveMyProfile(p => { p.invites = [...(p.invites || []).filter(i => !(i.to === uid && i.a === aid)), {to:uid, a:aid, t:Date.now()}].slice(-40); return p; }));
-  if (ok) { S.sheet = null; toast(t('Invite sent to {name}.', {name:firstName(nameOf(uid))})); render(); }
+  const ok = await attempt(async () => { await must(sb.from('invites').upsert({sender:S.me, recipient:uid, activity_id:aid}, {onConflict:'sender,recipient,activity_id', ignoreDuplicates:true})); });
+  if (ok) { S.sheet = null; toast(t('Invite sent to {name}.', {name:firstName(nameOf(uid))})); await refresh('profiles', true); render(); }
 }
 async function submitReport(){
   const sh = S.sheet; if (!sh || !sh.reason) { if (sh) { sh.err = t('Choose a reason so moderators know what happened.'); render(); } return; }
-  const ok = await attempt(() => writeDoc('reports/' + S.me, () => S.myReports, d => { d.items = [...(d.items || []), {kind:sh.kind, target:sh.target, reason:sh.reason, note:String(sh.note || '').slice(0, 600), t:Date.now()}].slice(-100); return d; }));
+  const ok = await attempt(async () => { await must(sb.from('reports').insert({reporter:S.me, kind:sh.kind, target:String(sh.target), reason:sh.reason, note:String(sh.note || '').slice(0, 600)})); });
   if (ok) { S.sheet = null; toast(t('Report sent. Thanks for helping keep meetups safe.')); render(); }
 }
 async function sendMsg(actId){
@@ -2193,48 +2372,43 @@ async function sendMsg(actId){
   const a = S.acts[actId]; if (!a || !inRoster(a)) return;
   S.chatDraft[actId] = '';
   const ta = $('#chat-input'); if (ta) { ta.value = ''; ta.style.height = ''; }
-  const ok = await attempt(() => writeDoc('chats/' + S.me, () => S.chatRaw[S.me], d => {
-    d.a = d.a || {};
-    for (const k of Object.keys(d.a)) { const x = S.acts[k]; if (x && Date.now() > x.startAt + (x.dur || 60) * MIN + 14 * DAY) delete d.a[k]; }
-    d.a[actId] = [...(d.a[actId] || []), {t:Date.now(), x:text.slice(0, 1000)}].slice(-150);
-    return d;
-  }));
+  const ok = await attempt(async () => { await must(sb.from('messages').insert({activity_id:actId, author:S.me, body:text.slice(0, 1000)})); });
   if (!ok) { S.chatDraft[actId] = text; if (ta) ta.value = text; }
+  await refresh('messages', true);
   renderChatMsgs(true);
 }
 async function setMembership(cid, on){
-  const ok = await attempt(() => saveMembers(d => { d.c = d.c || {}; if (on) d.c[cid] = Date.now(); else delete d.c[cid]; return d; }));
-  if (ok) toast(on ? t('Welcome to {club}.', {club:S.comms[cid]?.name || t('the club')}) : t('You left the club.'));
+  const ok = await attempt(async () => { await must(on ? sb.from('club_members').insert({club_id:cid, user_id:S.me}) : sb.from('club_members').delete().eq('club_id', cid).eq('user_id', S.me)); });
+  if (ok) { toast(on ? t('Welcome to {club}.', {club:S.comms[cid]?.name || t('the club')}) : t('You left the club.')); await refresh('clubs', true); render(); }
 }
-function saveComm(cid, mutate){ return writeDoc('communities/' + cid, () => S.comms[cid], d => { const r = mutate(d) || d; if (r.createdBy === 'seed' && S.isOwner) r.admins = uniq([...(r.admins || []), S.me]); return r; }); }
 async function postAnnouncement(cid){
   const sh = S.sheet, text = String(sh.text || '').trim();
   if (!text) { sh.err = t('Write something before posting.'); render(); return; }
-  const ok = await attempt(() => saveComm(cid, d => { d.announcements = [...(d.announcements || []), {by:S.me, x:text.slice(0, 1200), t:Date.now()}].slice(-30); return d; }));
-  if (ok) { S.sheet = null; toast(t('Announcement posted. Members will see it in their notifications.')); render(); }
+  const ok = await attempt(async () => { await must(sb.from('announcements').insert({club_id:cid, author:S.me, body:text.slice(0, 1200)})); });
+  if (ok) { S.sheet = null; toast(t('Announcement posted. Members will see it in their notifications.')); await refresh('clubs', true); render(); }
 }
 async function makeAdmin(cid, uid){
-  const ok = await attempt(() => saveComm(cid, d => { d.admins = uniq([...(d.admins || []), uid]); return d; }));
-  if (ok) toast(t('{name} is now an admin.', {name:firstName(nameOf(uid))}));
+  const ok = await attempt(async () => { await must(sb.from('club_members').update({role:'admin'}).eq('club_id', cid).eq('user_id', uid)); });
+  if (ok) { toast(t('{name} is now an admin.', {name:firstName(nameOf(uid))})); await refresh('clubs', true); render(); }
 }
 async function deleteComm(cid){
-  const ok = await attempt(() => retry(() => S.db.doc('communities/' + cid).delete()));
-  if (ok) { toast(t('Club deleted.')); location.hash = '#feeds'; }
+  const ok = await attempt(async () => { await must(sb.from('clubs').delete().eq('id', cid)); });
+  if (ok) { toast(t('Club deleted.')); await refresh('clubs', true); location.hash = '#feeds'; }
 }
 async function followFeed(slug, on){
   const f = FEED[slug]; if (!f) return;
-  const ok = await attempt(() => saveMyProfile(p => { const set = new Set(p.interests || []); on ? set.add(f.name) : set.delete(f.name); p.interests = [...set].slice(0, 44); return p; }));
-  if (ok) toast(on ? t('You’re following {feed}.', {feed:t(f.name)}) : t('You unfollowed {feed}.', {feed:t(f.name)}));
+  const set = new Set((myProfile() || {}).interests || []); on ? set.add(f.name) : set.delete(f.name);
+  const ok = await attempt(async () => { await must(sb.from('profiles').update({interests:[...set].slice(0, 44)}).eq('id', S.me)); });
+  if (ok) { toast(on ? t('You’re following {feed}.', {feed:t(f.name)}) : t('You unfollowed {feed}.', {feed:t(f.name)})); await refresh('profiles', true); render(); }
 }
 async function postToFeed(slug, text){
   const f = FEED[slug]; text = String(text || '').trim();
   if (!f || !text) return false;
-  const pid = newId();
   const ok = await attempt(async () => {
-    await savePosts(d => { d.items = d.items || {}; d.items[pid] = {f:slug, x:text.slice(0, 1000), t:Date.now()}; return prunePosts(d); });
-    if (!followsFeed(slug)) await saveMyProfile(p => { p.interests = uniq([...(p.interests || []), f.name]); return p; });
+    await must(sb.from('posts').insert({author:S.me, feed:slug, body:text.slice(0, 1000)}));
+    if (!followsFeed(slug)) await must(sb.from('profiles').update({interests:uniq([...((myProfile() || {}).interests || []), f.name])}).eq('id', S.me));
   });
-  if (ok) toast(t('Posted to {feed}.', {feed:t(f.name)}));
+  if (ok) { toast(t('Posted to {feed}.', {feed:t(f.name)})); await Promise.all([refresh('posts', true), refresh('profiles', true)]); }
   return ok;
 }
 async function replyTo(pid){
@@ -2242,17 +2416,18 @@ async function replyTo(pid){
   if (!sh || !parent) return;
   const text = String(sh.text || '').trim(); if (!text) return;
   sh.text = ''; const ta = $('#reply-input'); if (ta) ta.value = '';
-  const ok = await attempt(() => savePosts(d => { d.items = d.items || {}; d.items[newId()] = {f:parent.f, x:text.slice(0, 1000), t:Date.now(), re:pid, ro:parent.by}; return prunePosts(d); }));
+  const ok = await attempt(async () => { await must(sb.from('posts').insert({author:S.me, feed:parent.f, body:text.slice(0, 1000), parent_id:pid})); });
   if (!ok) sh.text = text;
-  render();
+  await refresh('posts', true); render();
 }
 async function toggleLike(pid){
   const on = iLiked(pid);
-  await attempt(() => savePosts(d => { d.likes = d.likes || {}; if (on) delete d.likes[pid]; else d.likes[pid] = Date.now(); return prunePosts(d); }));
+  const ok = await attempt(async () => { await must(on ? sb.from('post_likes').delete().eq('post_id', pid).eq('user_id', S.me) : sb.from('post_likes').insert({post_id:pid, user_id:S.me})); });
+  if (ok) { await refresh('posts', true); render(); }
 }
 async function deletePost(pid, keepSheet){
-  const ok = await attempt(() => savePosts(d => { if (d.items) { delete d.items[pid]; for (const [k, v] of Object.entries(d.items)) if (v && v.re === pid) delete d.items[k]; } return d; }));
-  if (ok) { if (!keepSheet) S.sheet = null; toast(t('Deleted.')); render(); }
+  const ok = await attempt(async () => { await must(sb.from('posts').delete().eq('id', pid)); });
+  if (ok) { if (!keepSheet) S.sheet = null; toast(t('Deleted.')); await refresh('posts', true); render(); }
 }
 function setFeed(k, v){
   const d = k === 'draft' ? S.draft : S.gdraft; const f = FEED[v]; if (!d || !f) return;
@@ -2260,8 +2435,8 @@ function setFeed(k, v){
   if (k === 'gdraft' && !d.custom) { d.emoji = f.e; d.color = CAT_COLOR[f.cat] || 'olive'; }
 }
 async function markSeen(){
-  const now = Date.now();
-  if (unreadCount() && S.canWrite && S.hasId) { try { await savePrefs(d => { d.seenAt = now; return d; }); } catch (e) { /* not critical */ } }
+  if (!unreadCount() || !S.hasId) return;
+  try { await must(sb.from('user_settings').upsert({user_id:S.me, seen_at:iso(Date.now())}, {onConflict:'user_id'})); await refresh('mine', true); } catch (e) { /* not critical */ }
 }
 
 /* ---------- drafts ---------- */
@@ -2299,21 +2474,23 @@ async function publishActivity(){
   if (!d.free && !(Number(d.price) > 0)) errs.push(t('Enter a price, or switch to free.'));
   if (d.vis === 'community' && !d.comm) errs.push(t('Choose which club can see it.'));
   if (errs.length) { d.err = errs[0]; render(); return; }
-  const id = newId(), now = Date.now();
-  const a = {title:String(d.title).trim().slice(0, 80), feed:FEED[d.feed] ? d.feed : '', cat:FEED[d.feed] ? FEED[d.feed].cat : d.cat, desc:String(d.desc).trim().slice(0, 1500), date:d.date, time:d.time, startAt, dur:Number(d.dur) || 60,
-    price:d.free ? 0 : Math.round(Number(d.price) * 100) / 100, cur:d.free ? '' : (d.cur === 'TRY' ? 'TRY' : 'EUR'), cap:Math.max(2, Math.min(50, Number(d.cap) || 10)), area:d.area,
-    spot:String(d.spot).trim().slice(0, 120), exact:String(d.exact).trim().slice(0, 400), vis:d.vis, comm:d.comm || '', org:S.me, createdAt:now, status:'open'};
-  d.busy = true; render();
+  d.busy = true; d.err = ''; render();
+  let id = '';
   const ok = await attempt(async () => {
-    await saveMyActs(doc => {
-      doc.items = doc.items || {};
-      for (const [k, v] of Object.entries(doc.items)) if (!v || now > (v.startAt || 0) + 60 * DAY) delete doc.items[k];
-      doc.items[id] = a; return doc;
-    });
-    await retry(() => S.db.doc('rosters/' + id).set({ids:[S.me], at:{[S.me]:now}, org:S.me}));
+    const row = await must(sb.from('activities').insert({
+      host:S.me, title:String(d.title).trim().slice(0, 80), feed:FEED[d.feed] ? d.feed : null, cat:FEED[d.feed] ? FEED[d.feed].cat : d.cat,
+      description:String(d.desc).trim().slice(0, 1500), start_at:iso(startAt), duration_min:Number(d.dur) || 60,
+      price:d.free ? 0 : Math.round(Number(d.price) * 100) / 100, currency:d.free ? null : (d.cur === 'TRY' ? 'TRY' : 'EUR'),
+      capacity:Math.max(2, Math.min(50, Number(d.cap) || 10)), area:d.area, spot:String(d.spot).trim().slice(0, 120),
+      visibility:d.vis === 'community' ? 'club' : d.vis, club_id:d.comm || null,
+    }).select('id').single());
+    id = row.id;
+    const exact = String(d.exact).trim().slice(0, 400);
+    if (exact) await must(sb.from('activity_secrets').insert({activity_id:id, exact}));
   });
   d.busy = false;
   if (!ok) { render(); return; }
+  await refresh('acts', true);
   S.draft = null;
   location.hash = '#activity-' + id;
   toast(t('Published. Invite a few people to get it going.'));
@@ -2322,14 +2499,16 @@ async function createCommunity(){
   const g = S.gdraft;
   if (String(g.name).trim().length < 3) { g.err = t('Give your club a name of at least 3 characters.'); render(); return; }
   if (String(g.desc).trim().length < 10) { g.err = t('Add a short description so people know what it’s about.'); render(); return; }
-  const id = newId();
-  g.busy = true; render();
+  g.busy = true; g.err = ''; render();
+  let id = '';
   const ok = await attempt(async () => {
-    await retry(() => S.db.doc('communities/' + id).set({name:String(g.name).trim().slice(0, 60), desc:String(g.desc).trim().slice(0, 600), feed:g.feed, cat:FEED[g.feed] ? FEED[g.feed].cat : 'social', area:g.area, emoji:g.emoji, color:g.color, createdBy:S.me, admins:[S.me], announcements:[], createdAt:Date.now()}));
-    await saveMembers(d => { d.c = d.c || {}; d.c[id] = Date.now(); return d; });
+    const row = await must(sb.from('clubs').insert({name:String(g.name).trim().slice(0, 60), description:String(g.desc).trim().slice(0, 600), feed:g.feed,
+      cat:FEED[g.feed] ? FEED[g.feed].cat : 'social', area:g.area, emoji:g.emoji, color:g.color, created_by:S.me}).select('id').single());
+    id = row.id;
   });
   g.busy = false;
   if (!ok) { render(); return; }
+  await refresh('clubs', true);
   S.gdraft = null;
   location.hash = '#club-' + id;
   toast(t('Club created. Schedule its first activity so people have something to attend.'));
@@ -2341,15 +2520,14 @@ async function saveProfileDraft(d, isNew){
   if (ageN != null && (isNaN(ageN) || ageN < 18 || ageN > 99)) { d.err = t('Enter an age between 18 and 99, or leave it blank.'); render(); return false; }
   if ((d.interests || []).length < (isNew ? 3 : 1)) { d.err = isNew ? t('Pick at least 3 interests.') : t('Follow at least one feed.'); render(); return false; }
   if (!d.area) { d.err = t('Choose your area.'); render(); return false; }
-  d.busy = true; render();
-  const ok = await attempt(() => saveMyProfile(p => {
-    p.name = String(d.name).trim().slice(0, 40); p.age = ageN; p.showAge = !!d.showAge; p.bio = String(d.bio || '').trim().slice(0, 240);
-    p.interests = d.interests.slice(0, 24); p.area = d.area; p.adult = true;
-    p.following = p.following || {}; p.invites = p.invites || []; p.joinedAt = p.joinedAt || Date.now();
-    return p;
-  }));
+  d.busy = true; d.err = ''; render();
+  const ok = await attempt(async () => {
+    await must(sb.from('profiles').upsert({id:S.me, name:String(d.name).trim().slice(0, 40), bio:String(d.bio || '').trim().slice(0, 240), area:d.area,
+      interests:d.interests.slice(0, 24), age:d.showAge ? ageN : null, show_age:!!d.showAge, adult:true}, {onConflict:'id'}));
+    await must(sb.from('user_settings').upsert({user_id:S.me, age:ageN}, {onConflict:'user_id'}));
+  });
   d.busy = false;
-  if (ok) { S.ui.area = null; toast(isNew ? t('Welcome! Here’s what’s happening near you.') : t('Profile saved.')); }
+  if (ok) { await Promise.all([refresh('profiles', true), refresh('mine', true)]); S.ui.area = null; toast(isNew ? t('Welcome! Here’s what’s happening near you.') : t('Profile saved.')); }
   render();
   return ok;
 }
@@ -2360,13 +2538,42 @@ function emptyHtml(title, body, cta){ return `<div class="empty"><h2 class="h2">
 function backBar(extra = ''){ return `<div class="backbar"><button class="iconbtn" data-act="back" aria-label="${t('Back')}">${I.back}</button><span class="spacer"></span>${extra}</div>`; }
 function needsOnboarding(){ return S.loaded.profiles && S.canWrite && S.hasId && !S.profiles[S.me]; }
 function accessBanner(){
-  if (S.demo) return S.route.v === 'discover' ? `<div class="banner"><span><b>${t('Demo version.')}</b> ${t('What you do here is saved only on this device, so other people won’t see it.')}</span></div>` : '';
+  if (S.demo) return `<div class="banner banner-copper"><span><b>${t('Preview mode.')}</b> ${t('Nothing here is saved. Open this app from Claude while signed in to use shared activities.')}</span></div>`;
   if (!S.canWrite) return `<div class="banner"><span><b>${t('You’re browsing.')}</b> ${t('Ask the app’s owner for Contributor access to create and join activities.')}</span></div>`;
   return '';
 }
 
+function setupHtml(){ return `<section class="ob"><div class="ob-mark">${logoSvg('lg-ob', true)}</div><h1 class="h1" style="margin-top:28px">${t('Setup needed')}</h1><p class="sub">${KEY_IS_SECRET ? t('That’s the secret key, which must never go in a website. Use the anon or publishable key instead, and reset the secret key in Supabase under Project Settings, API Keys.') : t('This site isn’t connected to its database yet. Open index.html, paste your Supabase Project URL and key into the lines near the top, and upload it again.')}</p></section>`; }
+function langSeg(){ return `<div class="seg" style="align-self:flex-end" role="group" aria-label="${t('Language')}">${LANGS.map(([c, n]) => `<button data-act="lang" data-v="${c}" aria-pressed="${LANG === c}" lang="${c}">${n}</button>`).join('')}</div>`; }
+function authHtml(){
+  const a = S.auth || (S.auth = {step:'email', email:'', code:'', err:'', busy:false});
+  const err = a.err ? `<p class="err" role="alert">${esc(a.err)}</p>` : '';
+  if (a.step === 'code') return `<section class="ob">${langSeg()}
+    <div class="ob-mark">${logoSvg('lg-ob', true)}</div>
+    <h1 class="h1" style="margin-top:28px">${t('Check your email')}</h1>
+    <p class="sub">${t('We sent a sign-in link to {email}. Open it to sign in. If the email shows a 6-digit code, you can enter it here instead.', {email:`<b>${esc(a.email)}</b>`})}</p>
+    <div class="field"><label class="lbl" for="au-code">${t('6-digit code')}</label><input class="inp" id="au-code" data-bind="auth.code" inputmode="numeric" autocomplete="one-time-code" maxlength="10" value="${esc(a.code)}" style="max-width:220px;letter-spacing:.25em;font-size:20px;font-weight:700"></div>
+    ${err}
+    <div class="ob-foot"><button class="btn btn-ghost" data-act="auth-back">${t('Use a different email')}</button><button class="btn btn-join btn-wide" data-act="auth-verify" ${a.busy ? 'disabled' : ''}>${a.busy ? t('Signing in…') : t('Sign in')}</button></div>
+  </section>`;
+  return `<section class="ob">${langSeg()}
+    <div class="ob-mark">${logoSvg('lg-ob', true)}</div>
+    <h1 class="ob-title">${t('Find something you enjoy.')}<span>${t('Find people who enjoy it too.')}</span></h1>
+    <p class="sub" style="margin-top:18px">${t('Use your email to sign in or create an account. No password needed.')}</p>
+    <div class="field"><label class="lbl" for="au-email">${t('Email')}</label><input class="inp" id="au-email" type="email" data-bind="auth.email" autocomplete="email" value="${esc(a.email)}" placeholder="you@example.com"></div>
+    ${err}
+    <button class="btn btn-join btn-wide" style="margin-top:16px" data-act="auth-send" ${a.busy ? 'disabled' : ''}>${a.busy ? t('Sending…') : t('Send sign-in link')}</button>
+    ${CFG.google || CFG.apple ? `<p class="hint" style="text-align:center;margin:14px 0 6px">${t('or')}</p>` : ''}
+    ${CFG.google ? `<button class="btn btn-ghost btn-wide" data-act="auth-oauth" data-v="google">${t('Continue with Google')}</button>` : ''}
+    ${CFG.apple ? `<button class="btn btn-ghost btn-wide" style="margin-top:8px" data-act="auth-oauth" data-v="apple">${t('Continue with Apple')}</button>` : ''}
+    <p class="hint" style="margin-top:18px">${t('By continuing you confirm you’re 18 or older.')}</p>
+  </section>`;
+}
 function viewHtml(){
   if (!S.booted) return loadingHtml(t('Opening Gomma…'));
+  if (S.setup) return setupHtml();
+  if (!S.hasId) return authHtml();
+  if (S.offline && !S.loaded.profiles) return emptyHtml(t('Can’t reach the server'), t('Check your connection and reload the page.'));
   if (S.revoked) return emptyHtml(t('Your access changed'), t('Reload the page to continue.'));
   if (!S.loaded.profiles || !S.loaded.acts) return loadingHtml(t('Finding what’s on near you…'));
   if (needsOnboarding()) return onboardingHtml();
@@ -2394,11 +2601,13 @@ function onboardingHtml(){
     <div class="ob-mark">${logoSvg('lg-ob', true)}</div>
     <h1 class="ob-title">${t('Find something you enjoy.')}<span>${t('Find people who enjoy it too.')}</span></h1>
     <p class="sub" style="margin-top:18px;font-size:17px">${t('Walks, games, sea swims and coffee meetups near you in Cyprus, with the people who actually show up.')}</p>
-    <p class="hint" style="margin-top:14px">${t('This is a demo. What you enter stays on this device.')}</p>
+    <p class="hint" style="margin-top:14px">${t('You’re signed in, so you’re ready to set up your profile.')}</p>
     <div class="ob-foot"><button class="btn btn-join btn-wide" data-act="ob-next">${t('Get started')}</button></div>
   </section>`;
   if (o.step === 1) return `<section class="ob">${prog(1)}
     <h1 class="h1">${t('About you')}</h1><p class="sub">${t('This is what people see when you join an activity.')}</p>
+    ${photoPicker('ob', !!o.photoPreview)}
+    <p class="hint" style="margin:0 0 6px">${t('Optional. You can add or change it later in your profile.')}</p>
     <div class="field"><label class="lbl" for="ob-name">${t('Your name')}</label><input class="inp" id="ob-name" data-bind="ob.name" value="${esc(o.name)}" maxlength="40" autocomplete="given-name" placeholder="${t('What should people call you?')}"></div>
     <div class="field"><label class="lbl" for="ob-bio">${t('A line about you')} <span class="muted">${t('(optional)')}</span></label><textarea class="inp" id="ob-bio" data-bind="ob.bio" maxlength="240" placeholder="${t('Second-year engineering student, always up for a sunset walk.')}">${esc(o.bio)}</textarea></div>
     <div class="field"><label class="lbl" for="ob-age">${t('Age')} <span class="muted">${t('(optional)')}</span></label><input class="inp" id="ob-age" data-bind="ob.age" value="${esc(o.age)}" inputmode="numeric" maxlength="2" style="max-width:120px">
@@ -2938,19 +3147,22 @@ function profileHtml(){
     ${past.length ? `<h2 class="sec">${t('Previous activities')}</h2><div class="list">${past.map(a => actRow(a)).join('')}</div>` : ''}
     <h2 class="sec">${t('Safety and privacy')}</h2>
     <div class="menu">
-      ${S.demo ? `<button data-act="reset-demo" style="color:var(--danger)">${t('Reset the demo')}</button>` : ''}
       <button data-act="lang">${t('Language')}<span>${(LANGS.find(x => x[0] === LANG) || LANGS[0])[1]}</span></button>
       <button data-act="theme">${t('Appearance')}<span>${t((THEMES.find(x => x[0] === themeNow()) || THEMES[0])[1])}</span></button>
       <button data-act="safety">${t('Meetup safety tips')}<span>${t('Read')}</span></button>
       <button data-act="blocked">${t('Blocked people')}<span>${(S.prefs.blocked || []).length}</span></button>
       ${S.canEdit ? `<button data-act="reports">${t('Reports from members')}<span>${reportCount}</span></button>` : ''}
     </div>
+    <h2 class="sec">${t('Account')}</h2>
+    <div class="menu"><button data-act="sign-out">${t('Sign out')}<span>${esc(S.email || '')}</span></button><button data-act="delete-account" style="color:var(--danger)">${t('Delete my account')}</button></div>
     <p class="hint" style="margin-top:22px">${t('Exact meeting points are only shown to people who join. Your age is only shown if you choose to show it.')}</p>`;
 }
 function editProfileHtml(){
   if (!myProfile()) return backBar() + emptyHtml(t('No profile yet'), '');
   const d = S.pedit || (S.pedit = profileDraft());
   return `${backBar()}<h1 class="h1">${t('Edit profile')}</h1>
+    ${photoPicker('me', !!(myProfile() || {}).photo)}
+    <p class="hint" style="margin:0 0 6px">${t('A clear photo of your face helps people recognise you when you meet. Only signed-in members can see it.')}</p>
     <div class="field"><label class="lbl" for="pe-name">${t('Your name')}</label><input class="inp" id="pe-name" data-bind="pedit.name" value="${esc(d.name)}" maxlength="40"></div>
     <div class="field"><label class="lbl" for="pe-bio">${t('A line about you')}</label><textarea class="inp" id="pe-bio" data-bind="pedit.bio" maxlength="240">${esc(d.bio)}</textarea></div>
     <div class="field"><label class="lbl" for="pe-age">${t('Age')} <span class="muted">${t('(optional)')}</span></label><input class="inp" id="pe-age" data-bind="pedit.age" value="${esc(d.age ?? '')}" inputmode="numeric" maxlength="2" style="max-width:120px">
@@ -3007,7 +3219,7 @@ function personSheet(uid){
     ${!self && met.length ? `<h3 class="sh">${t('You’ve met at')}</h3><p>${met.slice(0, 4).map(a => `${esc(a.title)} <span class="muted">(${dayLabel(a.startAt)})</span>`).join(', ')}</p>` : ''}
     ${theirs.length ? `<h3 class="sh">${t('Hosting soon')}</h3><div class="list">${theirs.map(a => actRow(a)).join('')}</div>` : ''}
     ${!self && S.canWrite && S.hasId ? `<div class="sheet-actions">${connBtn(uid).replace('btn-sm ', '')}<button class="btn btn-ghost" data-act="invite-person" data-uid="${esc(uid)}">${t('Invite to an activity')}</button></div>
-    <div class="sheet-actions" style="margin-top:12px"><button class="linkbtn" data-act="report" data-kind="person" data-target="${esc(uid)}">${t('Report')}</button><button class="linkbtn" style="color:var(--danger)" data-act="block" data-uid="${esc(uid)}">${t('Block')}</button></div>` : ''}`;
+    <div class="sheet-actions" style="margin-top:12px"><button class="linkbtn" data-act="report" data-kind="person" data-target="${esc(uid)}">${t('Report')}</button><button class="linkbtn" style="color:var(--danger)" data-act="block" data-uid="${esc(uid)}">${t('Block')}</button>${S.canEdit && p.photo ? `<button class="linkbtn" style="color:var(--danger)" data-act="mod-photo-remove" data-uid="${esc(uid)}">${t('Remove photo')}</button>` : ''}</div>` : ''}`;
 }
 function inviteSheet(s){
   if (s.uid) {
@@ -3058,7 +3270,7 @@ function navHtml(){
   const it = (v, l, icon, cls = '') => `<a href="#${v}" class="${cls}" ${nt === v ? 'aria-current="page"' : ''}>${cls ? `<span class="plus">${icon}</span>` : icon}<span>${l}</span></a>`;
   return `<div class="nav-in">${it('discover', t('Discover'), I.compass)}${it('people', t('People'), I.people)}${it('create', t('Create'), I.plus, 'create')}${it('feeds', t('Feeds'), I.feed)}${it('profile', t('Profile'), I.user)}</div>`;
 }
-function bare(){ return !S.booted || !S.loaded.profiles || !S.loaded.acts || needsOnboarding() || S.route.v === 'chat'; }
+function bare(){ return S.setup || !S.hasId || !S.booted || !S.loaded.profiles || !S.loaded.acts || needsOnboarding() || S.route.v === 'chat'; }
 function isTyping(){ const el = document.activeElement; if (!el || el.dataset.live !== undefined) return false; return el.tagName === 'TEXTAREA' || (el.tagName === 'INPUT' && !['checkbox','radio','button','date','time'].includes(el.type)); }
 let raf = 0, dirty = false;
 function schedule(){
@@ -3098,9 +3310,9 @@ function parseRoute(){
   if (['discover','people','create','feeds','profile','new-club','edit-profile'].includes(h)) return {v:h};
   if (h === 'groups') return {v:'feeds'};
   let m;
-  if ((m = h.match(/^activity-([a-z0-9]+)$/))) return {v:'activity', id:m[1]};
-  if ((m = h.match(/^chat-([a-z0-9]+)$/))) return {v:'chat', id:m[1]};
-  if ((m = h.match(/^(?:club|group)-([a-z0-9]+)$/))) return {v:'club', id:m[1]};
+  if ((m = h.match(/^activity-([a-z0-9-]+)$/))) return {v:'activity', id:m[1]};
+  if ((m = h.match(/^chat-([a-z0-9-]+)$/))) return {v:'chat', id:m[1]};
+  if ((m = h.match(/^(?:club|group)-([a-z0-9-]+)$/))) return {v:'club', id:m[1]};
   if ((m = h.match(/^feed-([a-z0-9-]+)$/))) return {v:'feed', id:m[1]};
   return {v:'discover'};
 }
@@ -3138,6 +3350,9 @@ const ACT = {
   'act-more': el => openSheet({type:'act-more', id:el.dataset.id}),
   'comm-more': el => openSheet({type:'comm-more', id:el.dataset.id}),
   person: el => openSheet({type:'person', uid:el.dataset.uid}),
+  'photo-remove': () => openSheet({type:'confirm', title:t('Remove your photo?'), body:t('People will see your initials instead.'), cta:t('Remove photo'), danger:true, fn:() => setMyPhoto(null)}),
+  'ob-photo-clear': () => { if (S.ob && S.ob.photoPreview) URL.revokeObjectURL(S.ob.photoPreview); if (S.ob) { S.ob.photoBlob = null; S.ob.photoPreview = ''; } render(); },
+  'mod-photo-remove': el => { const uid = el.dataset.uid; openSheet({type:'confirm', title:t('Remove this person’s photo?'), body:t('Use this if the photo breaks the community rules. They can add a new one.'), cta:t('Remove photo'), danger:true, fn:() => removeTheirPhoto(uid)}); },
   connect: el => setFollow(el.dataset.uid, true),
   unconnect: el => { const uid = el.dataset.uid; if (connState(uid) === 'connected') openSheet({type:'confirm', title:t('Remove {name} from your connections?', {name:firstName(nameOf(uid))}), body:t('You can connect again later.'), cta:t('Remove connection'), danger:true, fn:() => setFollow(uid, false)}); else setFollow(uid, false); },
   block: el => { const uid = el.dataset.uid; openSheet({type:'confirm', title:t('Block {name}?', {name:firstName(nameOf(uid))}), body:t('You won’t see their profile, activities or messages, and they’re removed from your connections. They aren’t told.'), cta:t('Block'), danger:true, fn:() => blockUser(uid)}); },
@@ -3182,7 +3397,7 @@ const ACT = {
     o.step++; render(); window.scrollTo(0, 0);
   },
   'ob-prev': () => { S.ob.step = Math.max(0, S.ob.step - 1); S.ob.err = ''; render(); },
-  'ob-finish': async () => { const ok = await saveProfileDraft(S.ob, true); if (ok) { S.ob = null; location.hash = '#discover'; render(); } },
+  'ob-finish': async () => { const ok = await saveProfileDraft(S.ob, true); if (ok) { const pb = S.ob && S.ob.photoBlob, pv = S.ob && S.ob.photoPreview; S.ob = null; location.hash = '#discover'; render(); if (pb) await setMyPhoto(pb, true); if (pv) URL.revokeObjectURL(pv); } },
   'save-profile': async () => { const ok = await saveProfileDraft(S.pedit, false); if (ok) goBack(); },
   'pick-feed': el => { setFeed(el.dataset.k, el.dataset.v); render(); },
   'follow-feed': el => followFeed(el.dataset.v, true),
@@ -3220,7 +3435,28 @@ const ACT = {
   'del-post': el => deletePost(el.dataset.id, true),
   'del-post-confirm': el => { const id = el.dataset.id; openSheet({type:'confirm', title:t('Delete this post?'), body:t('It’s removed from the feed along with your replies to it.'), cta:t('Delete post'), danger:true, fn:() => deletePost(id)}); },
   'plan-post': el => { const po = S.posts[el.dataset.id]; if (!po) return; const f = FEED[po.f]; const mine = po.by === S.me; S.draft = newDraft({feed:po.f, cat:f.cat, ...(mine ? {title:po.x.split('\n')[0].slice(0, 80), desc:po.x.slice(0, 1500)} : {})}); location.hash = '#create'; },
-  'reset-demo': () => openSheet({type:'confirm', title:t('Reset the demo?'), body:t('Your profile, posts and activities on this device are removed, and the sample content comes back.'), cta:t('Reset'), danger:true, fn:() => { try { localStorage.removeItem(DEMO_KEY); } catch (e) {} location.hash = '#discover'; location.reload(); }}),
+  'auth-send': async () => {
+    const a = S.auth, em = String(a.email || '').trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { a.err = t('Enter a valid email address.'); render(); return; }
+    a.busy = true; a.err = ''; render();
+    const { error } = await sb.auth.signInWithOtp({email:em, options:{emailRedirectTo:location.origin + location.pathname}});
+    a.busy = false;
+    if (error) { console.warn(error); a.err = t('We couldn’t send the email. Wait a minute and try again.'); }
+    else { a.step = 'code'; a.email = em; a.code = ''; }
+    render();
+  },
+  'auth-verify': async () => {
+    const a = S.auth, code = String(a.code || '').replace(/\s/g, '');
+    if (!code) return;
+    a.busy = true; a.err = ''; render();
+    const { error } = await sb.auth.verifyOtp({email:a.email, token:code, type:'email'});
+    if (error) { a.busy = false; a.err = t('That code didn’t work. Check it and try again, or request a new link.'); render(); }
+  },
+  'auth-back': () => { S.auth = {step:'email', email:(S.auth && S.auth.email) || '', code:'', err:'', busy:false}; render(); },
+  'auth-oauth': async el => { await sb.auth.signInWithOAuth({provider:el.dataset.v, options:{redirectTo:location.origin + location.pathname}}); },
+  'sign-out': async () => { await sb.auth.signOut(); toast(t('Signed out.')); },
+  'delete-account': () => openSheet({type:'confirm', title:t('Delete your account?'), body:t('Your profile, posts, messages and activities are deleted for good. This can’t be undone.'), cta:t('Delete account'), danger:true,
+    fn: async () => { const ph = (myProfile() || {}).photo; if (ph) { try { await sb.storage.from('avatars').remove([ph]); } catch (e) {} } const { error } = await sb.rpc('delete_my_account'); if (error) { writeErr(error); return; } await sb.auth.signOut(); toast(t('Your account was deleted.')); }}),
   lang: el => { const l = el.dataset.v; if (!l) { openSheet({type:'lang'}); return; } LANG = l; lsSet('fyp-lang', l); document.documentElement.lang = l; S.sheet = null; render(); },
   theme: el => { const v = el.dataset.v; if (!v) { openSheet({type:'theme'}); return; } if (v === 'system') delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme = v; lsSet('fyp-theme', v); S.sheet = null; render(); },
   safety: el => openSheet({type:'safety', area:el.dataset.area || '', ctx:el.dataset.area ? 'act' : 'me'}),
@@ -3256,6 +3492,16 @@ document.addEventListener('input', e => {
   if (el.dataset.live !== undefined && !e.isComposing) { clearTimeout(liveT); liveT = setTimeout(render, 140); }
 });
 let liveT;
+document.addEventListener('change', async e => {
+  const el = e.target;
+  if (!el.matches || !el.matches('input[type=file][data-photo]')) return;
+  const file = el.files && el.files[0]; const kind = el.dataset.photo; el.value = '';
+  if (!file) return;
+  let blob;
+  try { blob = await photoBlob(file); } catch (err) { toast(t('That photo couldn’t be used. Try a JPG or PNG.')); return; }
+  if (kind === 'ob') { if (!S.ob) return; if (S.ob.photoPreview) URL.revokeObjectURL(S.ob.photoPreview); S.ob.photoBlob = blob; S.ob.photoPreview = URL.createObjectURL(blob); render(); }
+  else await setMyPhoto(blob);
+});
 document.addEventListener('change', e => {
   const el = e.target;
   if (el.id === 'area-sel') { S.ui.area = el.value; render(); return; }
@@ -3272,6 +3518,8 @@ document.addEventListener('change', e => {
 });
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && S.sheet) { S.sheet = null; render(); }
+  if (e.key === 'Enter' && e.target.id === 'au-email') { e.preventDefault(); ACT['auth-send'](); }
+  if (e.key === 'Enter' && e.target.id === 'au-code') { e.preventDefault(); ACT['auth-verify'](); }
   if (e.key === 'Enter' && !e.shiftKey && e.target.id === 'chat-input' && !e.isComposing) { e.preventDefault(); sendMsg(S.route.id); }
 });
 /* swipe between feeds */
@@ -3326,56 +3574,38 @@ let toastT;
 function toast(msg){ const el = $('#toast'); el.textContent = msg; el.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('show'), 3400); }
 setInterval(() => { if (!S.sheet && !isTyping() && S.route.v !== 'chat') schedule(); }, 60000);
 
-/* ---------- boot ---------- */
-function subscribe(){
-  const db = S.db;
-  const onErr = e => { if (e && e.code === 'revoked') { S.revoked = true; schedule(); } else console.warn('db', e); };
-  const docsMap = s => { const m = {}; s.docs.forEach(d => { if (d.exists) m[d.id] = d.data(); }); return m; };
-  db.collection('profiles').onSnapshot(s => { S.profiles = docsMap(s); S.loaded.profiles = true; schedule(); }, onErr);
-  db.collection('activities').onSnapshot(s => {
-    const acts = {}, raw = {};
-    s.docs.forEach(d => { if (!d.exists) return; const data = d.data() || {}; raw[d.id] = data; const items = data.items || {};
-      for (const k of Object.keys(items)) { const v = items[k]; if (v && v.org === d.id && typeof v.startAt === 'number' && /^[a-z0-9]+$/.test(k)) acts[k] = {...v, id:k, cap:Math.max(2, Number(v.cap) || 10), dur:Number(v.dur) || 60}; } });
-    S.acts = acts; S.actRaw = raw; S.loaded.acts = true; schedule();
-  }, onErr);
-  db.collection('posts').onSnapshot(s => {
-    const posts = {}, likes = {}, raw = {};
-    s.docs.forEach(d => { if (!d.exists) return; const data = d.data() || {}; raw[d.id] = data;
-      const items = data.items || {};
-      for (const k of Object.keys(items)) { const v = items[k]; if (v && typeof v.x === 'string' && FEED[v.f] && /^[a-z0-9]+$/.test(k)) posts[k] = {...v, id:k, by:d.id, t:Number(v.t) || 0}; }
-      for (const k of Object.keys(data.likes || {})) (likes[k] = likes[k] || []).push(d.id);
-    });
-    S.posts = posts; S.likes = likes; S.postRaw = raw; schedule();
-  }, onErr);
-  db.collection('rosters').onSnapshot(s => { S.rosters = docsMap(s); schedule(); }, onErr);
-  db.collection('communities').onSnapshot(s => { const m = {}; s.docs.forEach(d => { if (d.exists && /^[a-z0-9]+$/.test(d.id)) m[d.id] = {...d.data(), id:d.id}; }); S.comms = m; schedule(); }, onErr);
-  db.collection('members').onSnapshot(s => { S.members = docsMap(s); schedule(); }, onErr);
-  db.collection('chats').onSnapshot(s => { const raw = docsMap(s), m = {}; for (const [k, v] of Object.entries(raw)) m[k] = (v && v.a) || {}; S.chatRaw = raw; S.chats = m; schedule(); }, onErr);
-  if (S.hasId) {
-    db.doc(`data/users/${S.me}/prefs`).onSnapshot(d => { const v = d.exists ? d.data() : null; S.prefsRaw = v; S.prefs = {saved:[], blocked:[], seenAt:0, ...(v || {})}; schedule(); }, onErr);
-    db.doc('reports/' + S.me).onSnapshot(d => { S.myReports = d.exists ? d.data() : null; }, onErr);
-  }
-  if (S.canEdit) db.collection('reports').onSnapshot(s => { S.reports = docsMap(s); schedule(); }, () => {});
+/* ---------- boot & sign-in ---------- */
+function resetData(){
+  for (const k of Object.keys(R)) R[k] = Array.isArray(R[k]) ? [] : (k === 'mod' ? false : null);
+  Object.assign(S, {profiles:{}, acts:{}, rosters:{}, comms:{}, members:{}, posts:{}, likes:{}, chats:{}, reports:{}, prefs:{saved:[], blocked:[], seenAt:0},
+    loaded:{profiles:false, acts:false}, ob:null, draft:null, gdraft:null, sheet:null, offline:false, canEdit:false, isOwner:false});
+}
+let sessionUid = null;
+async function useSession(session){
+  const uid = (session && session.user && session.user.id) || '';
+  if (uid === sessionUid) return;
+  sessionUid = uid;
+  stopListening(); resetData();
+  if (!uid) { S.me = ''; S.hasId = false; S.email = ''; render(); return; }
+  Object.assign(S, {me:uid, hasId:true, canWrite:true, writeKnown:true, email:session.user.email || '', auth:null});
+  render();
+  try { await loadAll(); listen(); } catch (e) { console.warn(e); S.offline = true; }
+  render();
 }
 async function boot(){
-  if (!location.hash) history.replaceState(null, '', '#discover');
+  if (!location.hash) history.replaceState(null, '', location.pathname + location.search + '#discover');
   S.route = parseRoute(); S.stack = [location.hash]; if (TABS.includes(S.route.v)) S.lastTab = S.route.v;
   if (S.route.v === 'feed') { S.ui.feed = S.route.id; S.lastTab = 'feeds'; S.centerStory = true; }
   render();
-  let db = null, user = null;
+  if (!sb) { S.setup = true; S.booted = true; render(); return; }
+  sb.auth.onAuthStateChange((event, session) => { setTimeout(() => useSession(session), 0); });
   try {
-    if (window.claude && typeof window.claude.use === 'function') [db, user] = await Promise.all([window.claude.use('db'), window.claude.use('user')]);
-  } catch (e) { db = null; user = null; }
-  if (user) {
-    S.user = user;
-    try { const id = await user.id(); if (id) { S.me = id; S.hasId = true; } } catch (e) {}
-    try { S.isOwner = await user.isOwner(); S.canEdit = await user.canEdit(); } catch (e) {}
-    try { const cw = await user.can('data.write'); if (cw === false) { S.canWrite = false; S.writeKnown = true; } else if (cw === true) S.writeKnown = true; } catch (e) {}
-  }
-  if (!db) { S.demo = true; db = new MemDB(); db.loadDemo(); S.me = 'demo-me'; S.hasId = true; S.canWrite = true; S.writeKnown = true; S.user = null; }
-  else if (!S.hasId) { S.canWrite = false; S.me = '__nobody__'; }
-  S.db = db; S.booted = true;
-  subscribe();
+    const { data } = await sb.auth.getSession();
+    if (/[?&](code|error)=/.test(location.search) || /(access_token|error_description|error)=/.test(BOOT_URL)) { history.replaceState(null, '', location.pathname + '#discover'); S.route = parseRoute(); S.stack = ['#discover']; }
+    if (/[?&#]error(_code|_description)?=/.test(BOOT_URL) && !(data && data.session)) S.auth = {step:'email', email:'', code:'', err:t('That sign-in link has expired or was already used. Enter your email to get a new one.'), busy:false};
+    S.booted = true;
+    await useSession(data && data.session);
+  } catch (e) { console.warn(e); S.booted = true; S.offline = true; }
   render();
 }
 boot();
